@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>StarIn</title>
+  <icon>https://www.xy47.top/images/logomain.png</icon>
+  <subtitle>Blog</subtitle>
+  <link href="https://www.xy47.top/atom.xml" rel="self"/>
+  
+  <link href="https://www.xy47.top/"/>
+  <updated>2025-10-19T11:47:46.641Z</updated>
+  <id>https://www.xy47.top/</id>
+  
+  <author>
+    <name>Skylarr Kuo</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OEC/OEC-T实现精确稳定自动挂载硬盘——避免检测不到硬盘无法启动问题</title>
+    <link href="https://www.xy47.top/2025/10/19/OEC-OEC-T%E5%AE%9E%E7%8E%B0%E7%B2%BE%E7%A1%AE%E7%A8%B3%E5%AE%9A%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/"/>
+    <id>https://www.xy47.top/2025/10/19/OEC-OEC-T%E5%AE%9E%E7%8E%B0%E7%B2%BE%E7%A1%AE%E7%A8%B3%E5%AE%9A%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</id>
+    <published>2025-10-19T10:22:36.000Z</published>
+    <updated>2025-10-19T11:47:46.641Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在 Armbian 系统中，挂载硬盘是一个常见操作。但传统的挂载方式（如直接修改 &lt;code&gt;/etc/fstab&lt;/code&gt; 文件）存在一定风险：一旦硬盘无法正常挂载，可能导致系统无法启动。本文介绍一种更安全、更稳定的挂载方式：&lt;strong&gt;使用 UUID 和</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://www.xy47.top/categories/Linux/"/>
+    
+    
+    <category term="Linux" scheme="https://www.xy47.top/tags/Linux/"/>
+    
+    <category term="日常" scheme="https://www.xy47.top/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MathJax-LaTeX公式</title>
+    <link href="https://www.xy47.top/2025/10/16/MathJax-LaTeX%E5%85%AC%E5%BC%8F/"/>
+    <id>https://www.xy47.top/2025/10/16/MathJax-LaTeX%E5%85%AC%E5%BC%8F/</id>
+    <published>2025-10-16T02:02:07.000Z</published>
+    <updated>2025-10-19T11:42:08.075Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;希腊字母&quot;&gt;&lt;a href=&quot;#希腊字母&quot; class=&quot;headerlink&quot; title=&quot;希腊字母&quot;&gt;&lt;/a&gt;希腊字母&lt;/h2&gt;&lt;p&gt;小写字母：&lt;br&gt;&lt;mjx-container class=&quot;MathJax&quot; jax=&quot;SVG&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="LaTeX" scheme="https://www.xy47.top/categories/LaTeX/"/>
+    
+    
+    <category term="MathJax" scheme="https://www.xy47.top/tags/MathJax/"/>
+    
+    <category term="LaTeX" scheme="https://www.xy47.top/tags/LaTeX/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的第一个GitHub仓库</title>
+    <link href="https://www.xy47.top/2025/10/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAGitHub%E4%BB%93%E5%BA%93/"/>
+    <id>https://www.xy47.top/2025/10/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAGitHub%E4%BB%93%E5%BA%93/</id>
+    <published>2025-10-12T12:50:04.000Z</published>
+    <updated>2025-10-19T11:47:14.147Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Code-Circus-🎪&quot;&gt;&lt;a href=&quot;#Code-Circus-🎪&quot; class=&quot;headerlink&quot; title=&quot;Code Circus 🎪&quot;&gt;&lt;/a&gt;Code Circus 🎪&lt;/h1&gt;&lt;p&gt;我的代码马戏团 -</summary>
+        
+      
+    
+    
+    
+    <category term="日常" scheme="https://www.xy47.top/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+    <category term="编程" scheme="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="日常" scheme="https://www.xy47.top/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+    <category term="Github" scheme="https://www.xy47.top/tags/Github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第十四届蓝桥杯第二期模拟赛题解</title>
+    <link href="https://www.xy47.top/2025/10/12/%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AC%AC%E4%BA%8C%E6%9C%9F%E6%A8%A1%E6%8B%9F%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
+    <id>https://www.xy47.top/2025/10/12/%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AC%AC%E4%BA%8C%E6%9C%9F%E6%A8%A1%E6%8B%9F%E8%B5%9B%E9%A2%98%E8%A7%A3/</id>
+    <published>2025-10-12T12:35:17.000Z</published>
+    <updated>2025-10-19T11:47:58.654Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;第十四届蓝桥杯第二期模拟赛题解&quot;&gt;&lt;a href=&quot;#第十四届蓝桥杯第二期模拟赛题解&quot; class=&quot;headerlink&quot; title=&quot;第十四届蓝桥杯第二期模拟赛题解&quot;&gt;&lt;/a&gt;第十四届蓝桥杯第二期模拟赛题解&lt;/h1&gt;&lt;h2 id=&quot;A题-填空题&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://www.xy47.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="C" scheme="https://www.xy47.top/tags/C/"/>
+    
+    <category term="编程" scheme="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="C++" scheme="https://www.xy47.top/tags/C/"/>
+    
+    <category term="蓝桥杯" scheme="https://www.xy47.top/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python的100个代码示例</title>
+    <link href="https://www.xy47.top/2025/10/12/Python%E7%9A%84100%E4%B8%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/"/>
+    <id>https://www.xy47.top/2025/10/12/Python%E7%9A%84100%E4%B8%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/</id>
+    <published>2025-10-12T12:25:33.000Z</published>
+    <updated>2025-10-19T11:46:47.620Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-生成6位数字随机验证码&quot;&gt;&lt;a href=&quot;#1-生成6位数字随机验证码&quot; class=&quot;headerlink&quot; title=&quot;1. 生成6位数字随机验证码&quot;&gt;&lt;/a&gt;1. 生成6位数字随机验证码&lt;/h2&gt;&lt;div</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://www.xy47.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="编程" scheme="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Python" scheme="https://www.xy47.top/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言编程小细节(1)</title>
+    <link href="https://www.xy47.top/2025/10/12/C%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%86%E8%8A%82%EF%BC%881%EF%BC%89/"/>
+    <id>https://www.xy47.top/2025/10/12/C%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%86%E8%8A%82%EF%BC%881%EF%BC%89/</id>
+    <published>2025-10-12T12:18:47.000Z</published>
+    <updated>2025-10-19T11:46:53.700Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;C语言中关于”0”的细节&quot;&gt;&lt;a href=&quot;#C语言中关于”0”的细节&quot; class=&quot;headerlink&quot; title=&quot;C语言中关于”0”的细节&quot;&gt;&lt;/a&gt;C语言中关于”0”的细节&lt;/h2&gt;&lt;h3 id=&quot;‘-0’-，‘0’，-“0”-之间的区别&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://www.xy47.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="C" scheme="https://www.xy47.top/tags/C/"/>
+    
+    <category term="编程" scheme="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java编程初学记录</title>
+    <link href="https://www.xy47.top/2025/10/12/Java%E7%BC%96%E7%A8%8B%E5%88%9D%E5%AD%A6%E8%AE%B0%E5%BD%95/"/>
+    <id>https://www.xy47.top/2025/10/12/Java%E7%BC%96%E7%A8%8B%E5%88%9D%E5%AD%A6%E8%AE%B0%E5%BD%95/</id>
+    <published>2025-10-12T12:15:08.000Z</published>
+    <updated>2025-10-19T11:48:08.445Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;记录初学Java时练习过的题目&quot;&gt;&lt;a href=&quot;#记录初学Java时练习过的题目&quot; class=&quot;headerlink&quot; title=&quot;记录初学Java时练习过的题目~&quot;&gt;&lt;/a&gt;记录初学Java时练习过的题目~&lt;/h2&gt;&lt;h3</summary>
+        
+      
+    
+    
+    
+    <category term="编程" scheme="https://www.xy47.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="编程" scheme="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="JAVA" scheme="https://www.xy47.top/tags/JAVA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【解决办法】树莓派系统使用PIP安装ultralytics失败</title>
+    <link href="https://www.xy47.top/2025/10/09/%E3%80%90%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E3%80%91%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8PIP%E5%AE%89%E8%A3%85ultralytics%E5%A4%B1%E8%B4%A5/"/>
+    <id>https://www.xy47.top/2025/10/09/%E3%80%90%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E3%80%91%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8PIP%E5%AE%89%E8%A3%85ultralytics%E5%A4%B1%E8%B4%A5/</id>
+    <published>2025-10-09T13:55:33.000Z</published>
+    <updated>2025-10-19T11:47:37.491Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;树莓派系统使用PIP安装ultralytics失败，解决办法：虚拟环境&quot;&gt;&lt;a href=&quot;#树莓派系统使用PIP安装ultralytics失败，解决办法：虚拟环境&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://www.xy47.top/categories/Linux/"/>
+    
+    
+    <category term="树莓派" scheme="https://www.xy47.top/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+    <category term="Linux" scheme="https://www.xy47.top/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>YOLOv10原理浅学</title>
+    <link href="https://www.xy47.top/2025/10/09/YOLOv10%E5%8E%9F%E7%90%86%E6%B5%85%E5%AD%A6/"/>
+    <id>https://www.xy47.top/2025/10/09/YOLOv10%E5%8E%9F%E7%90%86%E6%B5%85%E5%AD%A6/</id>
+    <published>2025-10-09T13:36:32.000Z</published>
+    <updated>2025-10-19T11:46:03.212Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;神经网络&quot;&gt;&lt;a href=&quot;#神经网络&quot; class=&quot;headerlink&quot; title=&quot;神经网络&quot;&gt;&lt;/a&gt;神经网络&lt;/h2&gt;&lt;h3 id=&quot;常用&quot;&gt;&lt;a href=&quot;#常用&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="深度学习" scheme="https://www.xy47.top/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="目标检测" scheme="https://www.xy47.top/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/"/>
+    
+    <category term="YOLO" scheme="https://www.xy47.top/tags/YOLO/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>YOLOv10初见</title>
+    <link href="https://www.xy47.top/2025/10/09/YOLOv10%E5%88%9D%E8%A7%81/"/>
+    <id>https://www.xy47.top/2025/10/09/YOLOv10%E5%88%9D%E8%A7%81/</id>
+    <published>2025-10-09T13:20:32.000Z</published>
+    <updated>2025-10-19T11:46:33.610Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="深度学习" scheme="https://www.xy47.top/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="目标检测" scheme="https://www.xy47.top/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/"/>
+    
+    <category term="YOLO" scheme="https://www.xy47.top/tags/YOLO/"/>
+    
+  </entry>
+  
+</feed>
