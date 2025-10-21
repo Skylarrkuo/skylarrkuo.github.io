@@ -15,8 +15,129 @@
     <atom:link href="https://www.xy47.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Sun, 19 Oct 2025 11:47:46 GMT</pubDate>
+    <pubDate>Tue, 21 Oct 2025 13:34:40 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>HTTP状态码详解</title>
+      <link>https://www.xy47.top/2025/10/21/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A6%E8%A7%A3/</link>
+      <guid>https://www.xy47.top/2025/10/21/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A6%E8%A7%A3/</guid>
+      <pubDate>Tue, 21 Oct 2025 13:33:25 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;HTTP 状态码是服务器在响应客户端请求时返回的三位数字代码，用于快速传达请求的处理结果。它们遵循 RFC 规范，是 Web 通信和</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://www.xy47.top/categories/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      
+      <category domain="https://www.xy47.top/tags/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      <category domain="https://www.xy47.top/tags/%E7%BD%91%E7%BB%9C/">网络</category>
+      
+      
+      <comments>https://www.xy47.top/2025/10/21/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A6%E8%A7%A3/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>HTTP状态码速查</title>
+      <link>https://www.xy47.top/2025/10/21/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E9%80%9F%E6%9F%A5/</link>
+      <guid>https://www.xy47.top/2025/10/21/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E9%80%9F%E6%9F%A5/</guid>
+      <pubDate>Tue, 21 Oct 2025 13:29:18 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>
+  &lt;div class=&quot;note-large blue&quot;&gt;
+    &lt;div class=&quot;notel-title rounded-t-lg p-3 font-bold text-lg flex flex-row gap-2 items-center&quot;&gt;
+     </description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://www.xy47.top/categories/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      
+      <category domain="https://www.xy47.top/tags/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      <category domain="https://www.xy47.top/tags/%E7%BD%91%E7%BB%9C/">网络</category>
+      
+      
+      <comments>https://www.xy47.top/2025/10/21/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E9%80%9F%E6%9F%A5/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>JavaScript 正则表达式速查表</title>
+      <link>https://www.xy47.top/2025/10/21/JavaScript-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%80%9F%E6%9F%A5%E8%A1%A8/</link>
+      <guid>https://www.xy47.top/2025/10/21/JavaScript-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%80%9F%E6%9F%A5%E8%A1%A8/</guid>
+      <pubDate>Tue, 21 Oct 2025 13:23:03 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h1 id=&quot;正则表达式速查表&quot;&gt;&lt;a href=&quot;#正则表达式速查表&quot; class=&quot;headerlink&quot; title=&quot;正则表达式速查表&quot;&gt;&lt;/a&gt;正则表达式速查表&lt;/h1&gt;&lt;p&gt;JavaScript 正则表达式速查表&lt;/p&gt;
+&lt;h3 id=&quot;普通字符&quot;&gt;&lt;a</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://www.xy47.top/categories/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      
+      <category domain="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/">编程</category>
+      
+      <category domain="https://www.xy47.top/tags/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      
+      <comments>https://www.xy47.top/2025/10/21/JavaScript-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%80%9F%E6%9F%A5%E8%A1%A8/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Git命令备忘录</title>
+      <link>https://www.xy47.top/2025/10/21/Git%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</link>
+      <guid>https://www.xy47.top/2025/10/21/Git%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</guid>
+      <pubDate>Tue, 21 Oct 2025 13:04:39 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;Git 是一种分布式版本控制系统。借助此备忘单，您可以快速查阅最常用的 Git 命令。&lt;/p&gt;
+&lt;h3 id=&quot;🛠️-配置设置&quot;&gt;&lt;a href=&quot;#🛠️-配置设置&quot; class=&quot;headerlink&quot; title=&quot;🛠️ 配置设置&quot;&gt;&lt;/a&gt;🛠️</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://www.xy47.top/categories/Git/">Git</category>
+      
+      
+      <category domain="https://www.xy47.top/tags/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      <category domain="https://www.xy47.top/tags/Git/">Git</category>
+      
+      
+      <comments>https://www.xy47.top/2025/10/21/Git%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>OEC/OEC-T实现精确稳定自动挂载硬盘——避免检测不到硬盘无法启动问题</title>
@@ -94,6 +215,8 @@
       
       
       <category domain="https://www.xy47.top/categories/%E6%97%A5%E5%B8%B8/">日常</category>
+      
+      <category domain="https://www.xy47.top/categories/Git/">Git</category>
       
       
       <category domain="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/">编程</category>
