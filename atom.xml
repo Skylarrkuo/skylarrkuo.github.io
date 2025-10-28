@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>StarIn</title>
-  <icon>https://www.xy47.top/images/logomain.png</icon>
+  <icon>https://www.starin.top/images/logomain.png</icon>
   <subtitle>Blog</subtitle>
-  <link href="https://www.xy47.top/atom.xml" rel="self"/>
+  <link href="https://www.starin.top/atom.xml" rel="self"/>
   
-  <link href="https://www.xy47.top/"/>
+  <link href="https://www.starin.top/"/>
   <updated>2025-10-24T09:54:05.189Z</updated>
-  <id>https://www.xy47.top/</id>
+  <id>https://www.starin.top/</id>
   
   <author>
     <name>Skylarr Kuo</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>单链表(Singly Linked List)的完整实现与详解~</title>
-    <link href="https://www.xy47.top/2025/10/24/%E5%8D%95%E9%93%BE%E8%A1%A8-Singly-Linked-List-%E7%9A%84%E5%AE%8C%E6%95%B4%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://www.xy47.top/2025/10/24/%E5%8D%95%E9%93%BE%E8%A1%A8-Singly-Linked-List-%E7%9A%84%E5%AE%8C%E6%95%B4%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AF%A6%E8%A7%A3/</id>
+    <link href="https://www.starin.top/2025/10/24/%E5%8D%95%E9%93%BE%E8%A1%A8-Singly-Linked-List-%E7%9A%84%E5%AE%8C%E6%95%B4%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://www.starin.top/2025/10/24/%E5%8D%95%E9%93%BE%E8%A1%A8-Singly-Linked-List-%E7%9A%84%E5%AE%8C%E6%95%B4%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AF%A6%E8%A7%A3/</id>
     <published>2025-10-24T09:53:24.000Z</published>
     <updated>2025-10-24T09:54:05.189Z</updated>
     
@@ -34,19 +34,19 @@
     
     
     
-    <category term="数据结构" scheme="https://www.xy47.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <category term="数据结构" scheme="https://www.starin.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-    <category term="编程" scheme="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://www.starin.top/tags/%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="数据结构" scheme="https://www.xy47.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <category term="数据结构" scheme="https://www.starin.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>顺序表（Sequential List）的完整实现与详解~</title>
-    <link href="https://www.xy47.top/2025/10/24/%E9%A1%BA%E5%BA%8F%E8%A1%A8(Sequential-List)%E7%9A%84%E5%AE%8C%E6%95%B4%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://www.xy47.top/2025/10/24/%E9%A1%BA%E5%BA%8F%E8%A1%A8(Sequential-List)%E7%9A%84%E5%AE%8C%E6%95%B4%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AF%A6%E8%A7%A3/</id>
+    <link href="https://www.starin.top/2025/10/24/%E9%A1%BA%E5%BA%8F%E8%A1%A8(Sequential-List)%E7%9A%84%E5%AE%8C%E6%95%B4%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://www.starin.top/2025/10/24/%E9%A1%BA%E5%BA%8F%E8%A1%A8(Sequential-List)%E7%9A%84%E5%AE%8C%E6%95%B4%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AF%A6%E8%A7%A3/</id>
     <published>2025-10-24T09:40:04.000Z</published>
     <updated>2025-10-24T09:43:15.691Z</updated>
     
@@ -61,19 +61,19 @@
     
     
     
-    <category term="数据结构" scheme="https://www.xy47.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <category term="数据结构" scheme="https://www.starin.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-    <category term="编程" scheme="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://www.starin.top/tags/%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="数据结构" scheme="https://www.xy47.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <category term="数据结构" scheme="https://www.starin.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>数据结构英文术语对照</title>
-    <link href="https://www.xy47.top/2025/10/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%8B%B1%E6%96%87%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7/"/>
-    <id>https://www.xy47.top/2025/10/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%8B%B1%E6%96%87%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7/</id>
+    <link href="https://www.starin.top/2025/10/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%8B%B1%E6%96%87%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7/"/>
+    <id>https://www.starin.top/2025/10/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%8B%B1%E6%96%87%E6%9C%AF%E8%AF%AD%E5%AF%B9%E7%85%A7/</id>
     <published>2025-10-24T09:34:08.000Z</published>
     <updated>2025-10-24T09:37:57.195Z</updated>
     
@@ -89,19 +89,19 @@
     
     
     
-    <category term="数据结构" scheme="https://www.xy47.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <category term="数据结构" scheme="https://www.starin.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-    <category term="编程" scheme="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://www.starin.top/tags/%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="数据结构" scheme="https://www.xy47.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <category term="数据结构" scheme="https://www.starin.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>HTTP状态码详解</title>
-    <link href="https://www.xy47.top/2025/10/21/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://www.xy47.top/2025/10/21/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A6%E8%A7%A3/</id>
+    <link href="https://www.starin.top/2025/10/21/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://www.starin.top/2025/10/21/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A6%E8%A7%A3/</id>
     <published>2025-10-21T13:33:25.000Z</published>
     <updated>2025-10-22T04:51:01.716Z</updated>
     
@@ -116,19 +116,19 @@
     
     
     
-    <category term="日常" scheme="https://www.xy47.top/categories/%E6%97%A5%E5%B8%B8/"/>
+    <category term="日常" scheme="https://www.starin.top/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
-    <category term="日常" scheme="https://www.xy47.top/tags/%E6%97%A5%E5%B8%B8/"/>
+    <category term="日常" scheme="https://www.starin.top/tags/%E6%97%A5%E5%B8%B8/"/>
     
-    <category term="网络" scheme="https://www.xy47.top/tags/%E7%BD%91%E7%BB%9C/"/>
+    <category term="网络" scheme="https://www.starin.top/tags/%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
   <entry>
     <title>HTTP状态码速查</title>
-    <link href="https://www.xy47.top/2025/10/21/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E9%80%9F%E6%9F%A5/"/>
-    <id>https://www.xy47.top/2025/10/21/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E9%80%9F%E6%9F%A5/</id>
+    <link href="https://www.starin.top/2025/10/21/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E9%80%9F%E6%9F%A5/"/>
+    <id>https://www.starin.top/2025/10/21/HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E9%80%9F%E6%9F%A5/</id>
     <published>2025-10-21T13:29:18.000Z</published>
     <updated>2025-10-22T04:51:20.133Z</updated>
     
@@ -146,19 +146,19 @@
     
     
     
-    <category term="日常" scheme="https://www.xy47.top/categories/%E6%97%A5%E5%B8%B8/"/>
+    <category term="日常" scheme="https://www.starin.top/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
-    <category term="日常" scheme="https://www.xy47.top/tags/%E6%97%A5%E5%B8%B8/"/>
+    <category term="日常" scheme="https://www.starin.top/tags/%E6%97%A5%E5%B8%B8/"/>
     
-    <category term="网络" scheme="https://www.xy47.top/tags/%E7%BD%91%E7%BB%9C/"/>
+    <category term="网络" scheme="https://www.starin.top/tags/%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
   <entry>
     <title>JavaScript 正则表达式速查表</title>
-    <link href="https://www.xy47.top/2025/10/21/JavaScript-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%80%9F%E6%9F%A5%E8%A1%A8/"/>
-    <id>https://www.xy47.top/2025/10/21/JavaScript-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%80%9F%E6%9F%A5%E8%A1%A8/</id>
+    <link href="https://www.starin.top/2025/10/21/JavaScript-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%80%9F%E6%9F%A5%E8%A1%A8/"/>
+    <id>https://www.starin.top/2025/10/21/JavaScript-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%80%9F%E6%9F%A5%E8%A1%A8/</id>
     <published>2025-10-21T13:23:03.000Z</published>
     <updated>2025-10-22T04:51:24.960Z</updated>
     
@@ -174,19 +174,19 @@
     
     
     
-    <category term="日常" scheme="https://www.xy47.top/categories/%E6%97%A5%E5%B8%B8/"/>
+    <category term="日常" scheme="https://www.starin.top/categories/%E6%97%A5%E5%B8%B8/"/>
     
     
-    <category term="编程" scheme="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://www.starin.top/tags/%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="日常" scheme="https://www.xy47.top/tags/%E6%97%A5%E5%B8%B8/"/>
+    <category term="日常" scheme="https://www.starin.top/tags/%E6%97%A5%E5%B8%B8/"/>
     
   </entry>
   
   <entry>
     <title>Git命令备忘录</title>
-    <link href="https://www.xy47.top/2025/10/21/Git%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/"/>
-    <id>https://www.xy47.top/2025/10/21/Git%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</id>
+    <link href="https://www.starin.top/2025/10/21/Git%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/"/>
+    <id>https://www.starin.top/2025/10/21/Git%E5%91%BD%E4%BB%A4%E5%A4%87%E5%BF%98%E5%BD%95/</id>
     <published>2025-10-21T13:04:39.000Z</published>
     <updated>2025-10-22T04:51:10.836Z</updated>
     
@@ -202,19 +202,19 @@
     
     
     
-    <category term="Git" scheme="https://www.xy47.top/categories/Git/"/>
+    <category term="Git" scheme="https://www.starin.top/categories/Git/"/>
     
     
-    <category term="日常" scheme="https://www.xy47.top/tags/%E6%97%A5%E5%B8%B8/"/>
+    <category term="日常" scheme="https://www.starin.top/tags/%E6%97%A5%E5%B8%B8/"/>
     
-    <category term="Git" scheme="https://www.xy47.top/tags/Git/"/>
+    <category term="Git" scheme="https://www.starin.top/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>OEC/OEC-T实现精确稳定自动挂载硬盘——避免检测不到硬盘无法启动问题</title>
-    <link href="https://www.xy47.top/2025/10/19/OEC-OEC-T%E5%AE%9E%E7%8E%B0%E7%B2%BE%E7%A1%AE%E7%A8%B3%E5%AE%9A%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/"/>
-    <id>https://www.xy47.top/2025/10/19/OEC-OEC-T%E5%AE%9E%E7%8E%B0%E7%B2%BE%E7%A1%AE%E7%A8%B3%E5%AE%9A%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</id>
+    <link href="https://www.starin.top/2025/10/19/OEC-OEC-T%E5%AE%9E%E7%8E%B0%E7%B2%BE%E7%A1%AE%E7%A8%B3%E5%AE%9A%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/"/>
+    <id>https://www.starin.top/2025/10/19/OEC-OEC-T%E5%AE%9E%E7%8E%B0%E7%B2%BE%E7%A1%AE%E7%A8%B3%E5%AE%9A%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98/</id>
     <published>2025-10-19T10:22:36.000Z</published>
     <updated>2025-10-22T04:51:27.523Z</updated>
     
@@ -229,19 +229,19 @@
     
     
     
-    <category term="Linux" scheme="https://www.xy47.top/categories/Linux/"/>
+    <category term="Linux" scheme="https://www.starin.top/categories/Linux/"/>
     
     
-    <category term="日常" scheme="https://www.xy47.top/tags/%E6%97%A5%E5%B8%B8/"/>
+    <category term="日常" scheme="https://www.starin.top/tags/%E6%97%A5%E5%B8%B8/"/>
     
-    <category term="Linux" scheme="https://www.xy47.top/tags/Linux/"/>
+    <category term="Linux" scheme="https://www.starin.top/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>MathJax-LaTeX公式</title>
-    <link href="https://www.xy47.top/2025/10/16/MathJax-LaTeX%E5%85%AC%E5%BC%8F/"/>
-    <id>https://www.xy47.top/2025/10/16/MathJax-LaTeX%E5%85%AC%E5%BC%8F/</id>
+    <link href="https://www.starin.top/2025/10/16/MathJax-LaTeX%E5%85%AC%E5%BC%8F/"/>
+    <id>https://www.starin.top/2025/10/16/MathJax-LaTeX%E5%85%AC%E5%BC%8F/</id>
     <published>2025-10-16T02:02:07.000Z</published>
     <updated>2025-10-22T04:50:58.616Z</updated>
     
@@ -256,19 +256,19 @@
     
     
     
-    <category term="LaTeX" scheme="https://www.xy47.top/categories/LaTeX/"/>
+    <category term="LaTeX" scheme="https://www.starin.top/categories/LaTeX/"/>
     
     
-    <category term="MathJax" scheme="https://www.xy47.top/tags/MathJax/"/>
+    <category term="MathJax" scheme="https://www.starin.top/tags/MathJax/"/>
     
-    <category term="LaTeX" scheme="https://www.xy47.top/tags/LaTeX/"/>
+    <category term="LaTeX" scheme="https://www.starin.top/tags/LaTeX/"/>
     
   </entry>
   
   <entry>
     <title>我的第一个GitHub仓库</title>
-    <link href="https://www.xy47.top/2025/10/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAGitHub%E4%BB%93%E5%BA%93/"/>
-    <id>https://www.xy47.top/2025/10/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAGitHub%E4%BB%93%E5%BA%93/</id>
+    <link href="https://www.starin.top/2025/10/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAGitHub%E4%BB%93%E5%BA%93/"/>
+    <id>https://www.starin.top/2025/10/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AAGitHub%E4%BB%93%E5%BA%93/</id>
     <published>2025-10-12T12:50:04.000Z</published>
     <updated>2025-10-22T04:51:22.303Z</updated>
     
@@ -283,21 +283,21 @@
     
     
     
-    <category term="Git" scheme="https://www.xy47.top/categories/Git/"/>
+    <category term="Git" scheme="https://www.starin.top/categories/Git/"/>
     
     
-    <category term="编程" scheme="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://www.starin.top/tags/%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="日常" scheme="https://www.xy47.top/tags/%E6%97%A5%E5%B8%B8/"/>
+    <category term="日常" scheme="https://www.starin.top/tags/%E6%97%A5%E5%B8%B8/"/>
     
-    <category term="Github" scheme="https://www.xy47.top/tags/Github/"/>
+    <category term="Github" scheme="https://www.starin.top/tags/Github/"/>
     
   </entry>
   
   <entry>
     <title>第十四届蓝桥杯第二期模拟赛题解</title>
-    <link href="https://www.xy47.top/2025/10/12/%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AC%AC%E4%BA%8C%E6%9C%9F%E6%A8%A1%E6%8B%9F%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
-    <id>https://www.xy47.top/2025/10/12/%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AC%AC%E4%BA%8C%E6%9C%9F%E6%A8%A1%E6%8B%9F%E8%B5%9B%E9%A2%98%E8%A7%A3/</id>
+    <link href="https://www.starin.top/2025/10/12/%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AC%AC%E4%BA%8C%E6%9C%9F%E6%A8%A1%E6%8B%9F%E8%B5%9B%E9%A2%98%E8%A7%A3/"/>
+    <id>https://www.starin.top/2025/10/12/%E7%AC%AC%E5%8D%81%E5%9B%9B%E5%B1%8A%E8%93%9D%E6%A1%A5%E6%9D%AF%E7%AC%AC%E4%BA%8C%E6%9C%9F%E6%A8%A1%E6%8B%9F%E8%B5%9B%E9%A2%98%E8%A7%A3/</id>
     <published>2025-10-12T12:35:17.000Z</published>
     <updated>2025-10-22T04:50:56.206Z</updated>
     
@@ -312,23 +312,23 @@
     
     
     
-    <category term="编程" scheme="https://www.xy47.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://www.starin.top/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-    <category term="C" scheme="https://www.xy47.top/tags/C/"/>
+    <category term="C" scheme="https://www.starin.top/tags/C/"/>
     
-    <category term="编程" scheme="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://www.starin.top/tags/%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="C++" scheme="https://www.xy47.top/tags/C/"/>
+    <category term="C++" scheme="https://www.starin.top/tags/C/"/>
     
-    <category term="蓝桥杯" scheme="https://www.xy47.top/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
+    <category term="蓝桥杯" scheme="https://www.starin.top/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/"/>
     
   </entry>
   
   <entry>
     <title>Python的100个代码示例</title>
-    <link href="https://www.xy47.top/2025/10/12/Python%E7%9A%84100%E4%B8%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/"/>
-    <id>https://www.xy47.top/2025/10/12/Python%E7%9A%84100%E4%B8%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/</id>
+    <link href="https://www.starin.top/2025/10/12/Python%E7%9A%84100%E4%B8%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/"/>
+    <id>https://www.starin.top/2025/10/12/Python%E7%9A%84100%E4%B8%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/</id>
     <published>2025-10-12T12:25:33.000Z</published>
     <updated>2025-10-22T04:51:13.769Z</updated>
     
@@ -343,19 +343,19 @@
     
     
     
-    <category term="编程" scheme="https://www.xy47.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://www.starin.top/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-    <category term="编程" scheme="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://www.starin.top/tags/%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="Python" scheme="https://www.xy47.top/tags/Python/"/>
+    <category term="Python" scheme="https://www.starin.top/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>C语言编程小细节(1)</title>
-    <link href="https://www.xy47.top/2025/10/12/C%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%86%E8%8A%82%EF%BC%881%EF%BC%89/"/>
-    <id>https://www.xy47.top/2025/10/12/C%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%86%E8%8A%82%EF%BC%881%EF%BC%89/</id>
+    <link href="https://www.starin.top/2025/10/12/C%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%86%E8%8A%82%EF%BC%881%EF%BC%89/"/>
+    <id>https://www.starin.top/2025/10/12/C%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E5%B0%8F%E7%BB%86%E8%8A%82%EF%BC%881%EF%BC%89/</id>
     <published>2025-10-12T12:18:47.000Z</published>
     <updated>2025-10-22T04:51:29.963Z</updated>
     
@@ -370,19 +370,19 @@
     
     
     
-    <category term="编程" scheme="https://www.xy47.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://www.starin.top/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-    <category term="C" scheme="https://www.xy47.top/tags/C/"/>
+    <category term="C" scheme="https://www.starin.top/tags/C/"/>
     
-    <category term="编程" scheme="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://www.starin.top/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>Java编程初学记录</title>
-    <link href="https://www.xy47.top/2025/10/12/Java%E7%BC%96%E7%A8%8B%E5%88%9D%E5%AD%A6%E8%AE%B0%E5%BD%95/"/>
-    <id>https://www.xy47.top/2025/10/12/Java%E7%BC%96%E7%A8%8B%E5%88%9D%E5%AD%A6%E8%AE%B0%E5%BD%95/</id>
+    <link href="https://www.starin.top/2025/10/12/Java%E7%BC%96%E7%A8%8B%E5%88%9D%E5%AD%A6%E8%AE%B0%E5%BD%95/"/>
+    <id>https://www.starin.top/2025/10/12/Java%E7%BC%96%E7%A8%8B%E5%88%9D%E5%AD%A6%E8%AE%B0%E5%BD%95/</id>
     <published>2025-10-12T12:15:08.000Z</published>
     <updated>2025-10-22T04:51:05.536Z</updated>
     
@@ -397,19 +397,19 @@
     
     
     
-    <category term="编程" scheme="https://www.xy47.top/categories/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://www.starin.top/categories/%E7%BC%96%E7%A8%8B/"/>
     
     
-    <category term="编程" scheme="https://www.xy47.top/tags/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://www.starin.top/tags/%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="JAVA" scheme="https://www.xy47.top/tags/JAVA/"/>
+    <category term="JAVA" scheme="https://www.starin.top/tags/JAVA/"/>
     
   </entry>
   
   <entry>
     <title>【解决办法】树莓派系统使用PIP安装ultralytics失败</title>
-    <link href="https://www.xy47.top/2025/10/09/%E3%80%90%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E3%80%91%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8PIP%E5%AE%89%E8%A3%85ultralytics%E5%A4%B1%E8%B4%A5/"/>
-    <id>https://www.xy47.top/2025/10/09/%E3%80%90%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E3%80%91%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8PIP%E5%AE%89%E8%A3%85ultralytics%E5%A4%B1%E8%B4%A5/</id>
+    <link href="https://www.starin.top/2025/10/09/%E3%80%90%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E3%80%91%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8PIP%E5%AE%89%E8%A3%85ultralytics%E5%A4%B1%E8%B4%A5/"/>
+    <id>https://www.starin.top/2025/10/09/%E3%80%90%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95%E3%80%91%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8PIP%E5%AE%89%E8%A3%85ultralytics%E5%A4%B1%E8%B4%A5/</id>
     <published>2025-10-09T13:55:33.000Z</published>
     <updated>2025-10-22T04:51:17.149Z</updated>
     
@@ -424,12 +424,12 @@
     
     
     
-    <category term="Linux" scheme="https://www.xy47.top/categories/Linux/"/>
+    <category term="Linux" scheme="https://www.starin.top/categories/Linux/"/>
     
     
-    <category term="Linux" scheme="https://www.xy47.top/tags/Linux/"/>
+    <category term="Linux" scheme="https://www.starin.top/tags/Linux/"/>
     
-    <category term="树莓派" scheme="https://www.xy47.top/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    <category term="树莓派" scheme="https://www.starin.top/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
     
   </entry>
   
