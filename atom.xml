@@ -6,7 +6,7 @@
   <link href="https://www.starin.top/atom.xml" rel="self"/>
   
   <link href="https://www.starin.top/"/>
-  <updated>2025-10-30T13:41:48.191Z</updated>
+  <updated>2025-11-29T06:18:40.475Z</updated>
   <id>https://www.starin.top/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>排序算法</title>
+    <link href="https://www.starin.top/2025/11/29/67d6da0edb8b/"/>
+    <id>https://www.starin.top/2025/11/29/67d6da0edb8b/</id>
+    <published>2025-11-29T06:12:33.000Z</published>
+    <updated>2025-11-29T06:18:40.475Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数据结构" scheme="https://www.starin.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="算法" scheme="https://www.starin.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>冒泡排序(Bubble Sort)</title>
+    <link href="https://www.starin.top/2025/11/29/36950eeb1d14/"/>
+    <id>https://www.starin.top/2025/11/29/36950eeb1d14/</id>
+    <published>2025-11-29T06:08:07.000Z</published>
+    <updated>2025-11-29T06:09:59.639Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;冒泡排序&lt;/strong&gt;（英语：Bubble Sort，又称&lt;strong&gt;泡式排序&lt;/strong&gt;）是一种简单的&lt;a class=&quot;link&quot;  </summary>
+        
+      
+    
+    
+    
+    <category term="数据结构" scheme="https://www.starin.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+    <category term="算法" scheme="https://www.starin.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="排序" scheme="https://www.starin.top/tags/%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo修改默认文章URL的几种方式</title>

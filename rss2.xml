@@ -15,8 +15,64 @@
     <atom:link href="https://www.starin.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Thu, 30 Oct 2025 13:41:48 GMT</pubDate>
+    <pubDate>Sat, 29 Nov 2025 06:18:40 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>排序算法</title>
+      <link>https://www.starin.top/2025/11/29/67d6da0edb8b/</link>
+      <guid>https://www.starin.top/2025/11/29/67d6da0edb8b/</guid>
+      <pubDate>Sat, 29 Nov 2025 06:12:33 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://www.starin.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      
+      <category domain="https://www.starin.top/tags/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      
+      <comments>https://www.starin.top/2025/11/29/67d6da0edb8b/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>冒泡排序(Bubble Sort)</title>
+      <link>https://www.starin.top/2025/11/29/36950eeb1d14/</link>
+      <guid>https://www.starin.top/2025/11/29/36950eeb1d14/</guid>
+      <pubDate>Sat, 29 Nov 2025 06:08:07 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;&lt;strong&gt;冒泡排序&lt;/strong&gt;（英语：Bubble Sort，又称&lt;strong&gt;泡式排序&lt;/strong&gt;）是一种简单的&lt;a class=&quot;link&quot;  </description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://www.starin.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      
+      <category domain="https://www.starin.top/tags/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      <category domain="https://www.starin.top/tags/%E6%8E%92%E5%BA%8F/">排序</category>
+      
+      
+      <comments>https://www.starin.top/2025/11/29/36950eeb1d14/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Hexo修改默认文章URL的几种方式</title>
