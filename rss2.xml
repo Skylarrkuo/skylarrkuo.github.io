@@ -15,8 +15,37 @@
     <atom:link href="https://www.starin.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Fri, 05 Jun 2026 07:22:14 GMT</pubDate>
+    <pubDate>Tue, 09 Jun 2026 01:59:47 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>Docker 容器中 Hexo 部署 SSH 密钥配置完整指南</title>
+      <link>https://www.starin.top/post/f8ee3cb26a1e/</link>
+      <guid>https://www.starin.top/post/f8ee3cb26a1e/</guid>
+      <pubDate>Tue, 09 Jun 2026 02:00:00 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;使用 1Panel 面板在 Docker 容器中运行 Hexo，并通过定时任务自动部署到 GitHub Pages 时，遇到了一系列 SSH 密钥相关的问题。本文完整记录了从报错到解决的全过程，希望能帮到有相同需求的朋友。&lt;/p&gt;</description>
+      
+      
+      
+      
+      <category domain="https://www.starin.top/categories/%E5%8D%9A%E5%AE%A2%E5%B7%A5%E5%85%B7/">博客工具</category>
+      
+      
+      <category domain="https://www.starin.top/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://www.starin.top/tags/Docker/">Docker</category>
+      
+      <category domain="https://www.starin.top/tags/1Panel/">1Panel</category>
+      
+      <category domain="https://www.starin.top/tags/SSH/">SSH</category>
+      
+      <category domain="https://www.starin.top/tags/GitHub/">GitHub</category>
+      
+      
+      <comments>https://www.starin.top/post/f8ee3cb26a1e/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>从 hexo-admin 的漏洞堆里爬出来，我自己写了一个 Hexo 管理后台</title>
@@ -240,9 +269,9 @@
       <category domain="https://www.starin.top/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</category>
       
       
-      <category domain="https://www.starin.top/tags/Judge0/">Judge0</category>
-      
       <category domain="https://www.starin.top/tags/Docker/">Docker</category>
+      
+      <category domain="https://www.starin.top/tags/Judge0/">Judge0</category>
       
       <category domain="https://www.starin.top/tags/WSL/">WSL</category>
       
