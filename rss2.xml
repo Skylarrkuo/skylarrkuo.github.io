@@ -15,43 +15,80 @@
     <atom:link href="https://www.starin.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Fri, 17 Apr 2026 02:00:00 GMT</pubDate>
+    <pubDate>Fri, 05 Jun 2026 07:22:14 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>ChatGPT科研写作与论文辅助提示词合集（SCI / 论文写作 / 审稿回复）</title>
-      <link>https://www.starin.top/post/f340cce24881/</link>
-      <guid>https://www.starin.top/post/f340cce24881/</guid>
-      <pubDate>Fri, 17 Apr 2026 02:00:00 GMT</pubDate>
+      <title>从 hexo-admin 的漏洞堆里爬出来，我自己写了一个 Hexo 管理后台</title>
+      <link>https://www.starin.top/post/e363828f77b7/</link>
+      <guid>https://www.starin.top/post/e363828f77b7/</guid>
+      <pubDate>Thu, 04 Jun 2026 07:18:00 GMT</pubDate>
       
-      <description>整理了一套完整的ChatGPT科研写作Prompt合集，涵盖学术翻译、SCI论文润色、降重改写、参考文献检查、摘要生成、审稿意见回复、综述写作等40+高效指令。</description>
-      
-      
-      
-      
-      <category domain="https://www.starin.top/categories/AI%E5%B7%A5%E5%85%B7/">AI工具</category>
-      
-      <category domain="https://www.starin.top/categories/AI%E5%B7%A5%E5%85%B7/%E7%A7%91%E7%A0%94%E5%86%99%E4%BD%9C/">科研写作</category>
-      
-      
-      <category domain="https://www.starin.top/tags/ChatGPT/">ChatGPT</category>
-      
-      <category domain="https://www.starin.top/tags/SCI%E8%AE%BA%E6%96%87/">SCI论文</category>
-      
-      <category domain="https://www.starin.top/tags/%E5%AD%A6%E6%9C%AF%E5%86%99%E4%BD%9C/">学术写作</category>
-      
-      <category domain="https://www.starin.top/tags/Prompt/">Prompt</category>
-      
-      <category domain="https://www.starin.top/tags/%E8%AE%BA%E6%96%87%E6%B6%A6%E8%89%B2/">论文润色</category>
-      
-      <category domain="https://www.starin.top/tags/%E5%AE%A1%E7%A8%BF%E5%9B%9E%E5%A4%8D/">审稿回复</category>
-      
-      <category domain="https://www.starin.top/tags/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE/">参考文献</category>
-      
-      <category domain="https://www.starin.top/tags/%E5%AD%A6%E6%9C%AF%E7%BF%BB%E8%AF%91/">学术翻译</category>
+        
+        
+          
+          
+      <description>&lt;h2 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h2&gt;&lt;p&gt;事情是这样的。&lt;/p&gt;
+&lt;p&gt;我一直在用 hexo-admin 这个插件来管理我的 Hexo</description>
+          
+        
       
       
-      <comments>https://www.starin.top/post/f340cce24881/#disqus_thread</comments>
+      
+      
+      <category domain="https://www.starin.top/categories/%E5%BC%80%E5%8F%91/">开发</category>
+      
+      <category domain="https://www.starin.top/categories/%E5%BC%80%E5%8F%91/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">开源项目</category>
+      
+      
+      <category domain="https://www.starin.top/tags/Hexo/">Hexo</category>
+      
+      <category domain="https://www.starin.top/tags/Vue-js/">Vue.js</category>
+      
+      <category domain="https://www.starin.top/tags/Node-js/">Node.js</category>
+      
+      <category domain="https://www.starin.top/tags/Claude-Code/">Claude Code</category>
+      
+      <category domain="https://www.starin.top/tags/AI%E8%BE%85%E5%8A%A9%E5%BC%80%E5%8F%91/">AI辅助开发</category>
+      
+      <category domain="https://www.starin.top/tags/%E5%8D%9A%E5%AE%A2%E5%B7%A5%E5%85%B7/">博客工具</category>
+      
+      <category domain="https://www.starin.top/tags/npm%E5%AE%89%E5%85%A8/">npm安全</category>
+      
+      
+      <comments>https://www.starin.top/post/e363828f77b7/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>写了几年业务代码，发现数据结构早就藏在每一行里</title>
+      <link>https://www.starin.top/post/9880822f453f/</link>
+      <guid>https://www.starin.top/post/9880822f453f/</guid>
+      <pubDate>Wed, 03 Jun 2026 14:14:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;说实话，刚工作那会儿，我一直觉得”数据结构与算法”是面试八股文，跟写CRUD没什么关系。&lt;/p&gt;
+&lt;p&gt;直到某天我看到同事把一个嵌套 for 循环（O(n²)）改成了一行</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://www.starin.top/categories/%E5%90%8E%E7%AB%AF%E7%AC%94%E8%AE%B0/">后端笔记</category>
+      
+      
+      <category domain="https://www.starin.top/tags/Java/">Java</category>
+      
+      <category domain="https://www.starin.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      <category domain="https://www.starin.top/tags/%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91/">业务开发</category>
+      
+      
+      <comments>https://www.starin.top/post/9880822f453f/#disqus_thread</comments>
       
     </item>
     
@@ -81,6 +118,43 @@
       
       
       <comments>https://www.starin.top/post/89bfea82ddd2/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>ChatGPT科研写作与论文辅助提示词合集（SCI / 论文写作 / 审稿回复）</title>
+      <link>https://www.starin.top/post/f340cce24881/</link>
+      <guid>https://www.starin.top/post/f340cce24881/</guid>
+      <pubDate>Fri, 17 Apr 2026 02:00:00 GMT</pubDate>
+      
+      <description>整理了一套完整的ChatGPT科研写作Prompt合集，涵盖学术翻译、SCI论文润色、降重改写、参考文献检查、摘要生成、审稿意见回复、综述写作等40+高效指令。</description>
+      
+      
+      
+      
+      <category domain="https://www.starin.top/categories/AI%E5%B7%A5%E5%85%B7/">AI工具</category>
+      
+      <category domain="https://www.starin.top/categories/AI%E5%B7%A5%E5%85%B7/%E7%A7%91%E7%A0%94%E5%86%99%E4%BD%9C/">科研写作</category>
+      
+      
+      <category domain="https://www.starin.top/tags/Prompt/">Prompt</category>
+      
+      <category domain="https://www.starin.top/tags/ChatGPT/">ChatGPT</category>
+      
+      <category domain="https://www.starin.top/tags/SCI%E8%AE%BA%E6%96%87/">SCI论文</category>
+      
+      <category domain="https://www.starin.top/tags/%E5%AD%A6%E6%9C%AF%E5%86%99%E4%BD%9C/">学术写作</category>
+      
+      <category domain="https://www.starin.top/tags/%E8%AE%BA%E6%96%87%E6%B6%A6%E8%89%B2/">论文润色</category>
+      
+      <category domain="https://www.starin.top/tags/%E5%AE%A1%E7%A8%BF%E5%9B%9E%E5%A4%8D/">审稿回复</category>
+      
+      <category domain="https://www.starin.top/tags/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE/">参考文献</category>
+      
+      <category domain="https://www.starin.top/tags/%E5%AD%A6%E6%9C%AF%E7%BF%BB%E8%AF%91/">学术翻译</category>
+      
+      
+      <comments>https://www.starin.top/post/f340cce24881/#disqus_thread</comments>
       
     </item>
     
@@ -334,9 +408,9 @@
       <category domain="https://www.starin.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</category>
       
       
-      <category domain="https://www.starin.top/tags/C/">C++</category>
-      
       <category domain="https://www.starin.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      <category domain="https://www.starin.top/tags/C/">C++</category>
       
       <category domain="https://www.starin.top/tags/%E5%8D%95%E9%93%BE%E8%A1%A8/">单链表</category>
       
@@ -367,9 +441,9 @@
       <category domain="https://www.starin.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</category>
       
       
-      <category domain="https://www.starin.top/tags/C/">C++</category>
-      
       <category domain="https://www.starin.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      <category domain="https://www.starin.top/tags/C/">C++</category>
       
       <category domain="https://www.starin.top/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/">顺序表</category>
       

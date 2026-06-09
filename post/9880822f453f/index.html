@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="星隐">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://www.starin.top/post/9880822f453f/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="写了几年业务代码，发现数据结构早就藏在每一行里">
+<meta property="og:url" content="https://www.starin.top/post/9880822f453f/index.html">
+<meta property="og:site_name" content="StarIn">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.starin.top/images/redefine-og.webp">
+<meta property="article:published_time" content="2026-06-03T14:14:00.000Z">
+<meta property="article:modified_time" content="2026-06-05T06:20:17.840Z">
+<meta property="article:author" content="Skylarr Kuo">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="业务开发">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.starin.top/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/logomain.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logomain.png">
+    <meta name="theme-color" content="#63a4a8">
+    <link rel="shortcut icon" href="/images/logomain.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            写了几年业务代码，发现数据结构早就藏在每一行里 | 星隐拾光笺
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+        
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+        
+<script src="/js/build/libs/anime.min.js"></script>
+
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"www.starin.top","root":"/","language":"zh-CN","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":null,"skip_dirs":[]}},"colors":{"primary":"#63a4a8","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.webp","dark":"/images/dark.webp"},"title":"星隐拾光笺","subtitle":{"text":["This is the first message","This is the second message","etc"],"hitokoto":{"enable":true,"show_author":true,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"3.8rem","subtitle_size":"1.8rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"center","links":[{"icon":"fa-brands fa-github","url":"https://github.com/Skylarrkuo"},{"icon":"fa-brands fa-bilibili","url":"https://space.bilibili.com/351993504"},{"icon":"fa-regular fa-envelope","url":"mailto:skylarrkuo@163.com"},{"icon":"fa-regular fa-square-rss","url":"https://www.starin.top/rss2.xml"},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null,"name":"微信","qrcode":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":true,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":true,"color":{"left":"#63a4a8","right":"#d7e3d1","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"随笔":{"path":"/essays","icon":"fa-regular fa-chart-bar"},"About":{"path":"/about","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"info","announcement":"Hello World!","show_on_mobile":true,"links":{"归档":{"path":"/archives","icon":"fa-regular fa-archive"},"标签":{"path":"/tags","icon":"fa-regular fa-tags"},"分类":{"path":"/categories","icon":"fa-regular fa-folder"},"随笔":{"path":"/essays","icon":"fa-regular fa-comment"},"RSS":{"path":"https://www.starin.top/rss2.xml","icon":"fa-regular fa-square-rss"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2023/9/25 17:00:00","statistics":true,"customize":null,"icp":{"enable":false,"number":"豫ICP备2022005062号-2","url":"https://beian.miit.gov.cn/#/Integrated/recordQuery"}},"footerStart":"2023/9/25 17:00:00","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.i18n = {"search":"站内搜索您需要的内容...","toc":"目录","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","post":"文章","posts":"文章","tagcloud":"标签云","comment":"评论","comments":"评论","top":"置顶","sticky":"置顶","go-back-home":"回到首页","masonry_loading":"照片加载中...","image_viewer":"图片查看器","close":"关闭","exif":{"title":"EXIF","cards":{"camera":"相机","lens":"镜头","exposure":"曝光","other":"其他"},"fields":{"make":"品牌","model":"机型","date_taken":"拍摄时间","lens_model":"镜头","focal_length":"焦距","focus_mode":"对焦模式","shutter":"快门","aperture":"光圈","iso":"感光度","exposure_program":"曝光程序","exposure_compensation":"曝光补偿","metering_mode":"测光模式","flash":"闪光灯","white_balance":"白平衡","latitude":"纬度","longitude":"经度","altitude":"海拔"},"status":{"loading":"加载中...","no_exif":"无 EXIF 信息","library_missing":"EXIF 库未加载","image_source_missing":"图片地址不可用","unavailable":"EXIF 不可用（可能被 CORS 阻止或缺少元数据）","flag_unavailable":"EXIF 不可用"}},"home":"首页","archive":"归档","archives":"归档","about":"关于","links":"链接","link":"链接","friends":"友情链接","friend":"友情链接","timeline":"时间轴","shuoshuo":"说说","bookmarks":"书签","site_uv":"访问人数","site_pv":"总访问量","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","status":"状态","runtime":"博客已运行","days":"天","hours":"小时","minutes":"分钟","seconds":"秒","optimized_by":"并由 Evan 进行优化","rights":"版权所有","site_posts":"共撰写了 %s 篇文章","site_wordcount":"共 %s 字","copyright":{"title":"标题","author":"作者","link":"链接","create_time":"创建于","update_time":"更新于","license_title":"版权声明","license_content":"本文章采用 %s 进行许可。","all_rights_reserved":"版权所有 &#169 %s，禁止转载。","public_domain":"本文为公有领域作品，可自由转载、引用。"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"},"create_time":"创建","update_time":"更新","expired":"这篇文章最后更新于 %s 天前，内容可能已经过时。"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="StarIn" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="StarIn" type="application/rss+xml">
+</head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <h2 class="ml13">
+        星隐拾光笺
+    </h2>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+        var animation = anime.timeline({ loop: true })
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [20, 0],
+                translateZ: 0,
+                opacity: [0, 1],
+                filter: ['blur(5px)', 'blur(0px)'],
+                easing: "easeOutExpo",
+                duration: 1200,
+                delay: (el, i) => 300 + 20 * i,
+            })
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [0, -20],
+                opacity: [1, 0],
+                filter: ['blur(0px)', 'blur(5px)'],
+                easing: "easeInExpo",
+                duration: 1000,
+                delay: (el, i) => 15 * i,
+                complete: function() {
+                    hidePreloader();
+                }
+            }, '-=700');
+
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
+        });
+
+        function hidePreloader() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 200);
+        }
+    </script>
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                星隐拾光笺
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/essays"
+                                        >
+                                    <i class="fa-regular fa-chart-bar fa-fw"></i>
+                                    随笔
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/essays"
+                        >
+                            <span>
+                                随笔
+                            </span>
+                            
+                                <i class="fa-regular fa-chart-bar fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/archives"
+                        >
+                            <span>归档</span>
+                            <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>标签</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>分类</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="https://www.starin.top/rss2.xml"
+                        >
+                            <span>RSS</span>
+                            <i class="fa-regular fa-square-rss fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">105</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">23</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">28</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">写了几年业务代码，发现数据结构早就藏在每一行里</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="/images/logomain.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">星隐</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-06-03 22:14</span>
+        <span class="mobile">2026-06-03 22:14</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-06-05 14:20:17</span>
+            <span class="mobile">2026-06-05 14:20:17</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E5%90%8E%E7%AB%AF%E7%AC%94%E8%AE%B0/">后端笔记</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Java/">Java</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91/">业务开发</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>3.2k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>13 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p>说实话，刚工作那会儿，我一直觉得”数据结构与算法”是面试八股文，跟写CRUD没什么关系。</p>
+<p>直到某天我看到同事把一个嵌套 for 循环（O(n²)）改成了一行 <code>stream().collect(Collectors.toMap(...))</code>，数据量一大，接口响应直接从 3 秒降到了 50ms。</p>
+<p>从那以后我就开始留意——<strong>平时写的业务代码里，到底哪些地方其实在用数据结构？</strong></p>
+<p>这篇文章不讲八股，不刷 LeetCode，就聊聊那些你天天写、可能没意识到自己在用的玩意儿。</p>
+<hr>
+<h2 id="一、HashMap-—-真·占了-80-场景"><a href="#一、HashMap-—-真·占了-80-场景" class="headerlink" title="一、HashMap — 真·占了 80% 场景"></a>一、HashMap — 真·占了 80% 场景</h2><p>我统计了一下自己近半年的提交记录，HashMap 出现的频率遥遥领先。不夸张，真的是日常开发的第一生产力。</p>
+<h3 id="1-别再嵌套循环查数据了"><a href="#1-别再嵌套循环查数据了" class="headerlink" title="1. 别再嵌套循环查数据了"></a>1. 别再嵌套循环查数据了</h3><p>这个场景太常见了：你从 A 表查出一批数据，要跟 B 表的数据关联。很多人的第一反应是两个 for 循环套一起，但如果数据量稍微大一点，性能就扛不住。</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先把用户列表转成 Map，后面想查谁直接 get</span></span><br><span class="line">Map&lt;Long, User&gt; userMap = users.stream()</span><br><span class="line">    .collect(Collectors.toMap(User::getId, u -&gt; u));</span><br><span class="line"></span><br><span class="line"><span class="comment">// O(1) 直接拿，不用再遍历了</span></span><br><span class="line"><span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> userMap.get(userId);</span><br></pre></td></tr></table></figure></div>
+
+<p>这玩意儿我几乎每个接口都在用。尤其当你从 ES、RPC 或者数据库里拿到一批数据，要做关联、要做补全信息的时候，先转 Map 再操作，基本是标准操作。</p>
+<h3 id="2-分组统计，一行搞定"><a href="#2-分组统计，一行搞定" class="headerlink" title="2. 分组统计，一行搞定"></a>2. 分组统计，一行搞定</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 按部门分组——&quot;我要看每个部门有多少人&quot;</span></span><br><span class="line">Map&lt;String, List&lt;Employee&gt;&gt; deptMap = employees.stream()</span><br><span class="line">    .collect(Collectors.groupingBy(Employee::getDept));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 按日期分组——&quot;我要看每天的订单量&quot;</span></span><br><span class="line">Map&lt;String, List&lt;Order&gt;&gt; orderMap = orders.stream()</span><br><span class="line">    .collect(Collectors.groupingBy(Order::getDate));</span><br></pre></td></tr></table></figure></div>
+
+<p>groupingBy 这个东西，写过报表类需求的人肯定不陌生。什么”按渠道统计”、”按地区汇总”，本质都是在分组。</p>
+<h3 id="3-计数器模式"><a href="#3-计数器模式" class="headerlink" title="3. 计数器模式"></a>3. 计数器模式</h3><p>这个是我以前会用 <code>List + 嵌套循环</code> 来干的蠢事，后来发现 HashMap 的 merge 方法简直就是为这个场景设计的：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 统计每个商品被买了几次</span></span><br><span class="line">Map&lt;Long, Integer&gt; countMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (OrderItem item : orderItems) &#123;</span><br><span class="line">    countMap.merge(item.getProductId(), <span class="number">1</span>, Integer::sum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顺便排个序，找出 Top 3 热销商品</span></span><br><span class="line">countMap.entrySet().stream()</span><br><span class="line">    .sorted(Map.Entry.&lt;Long, Integer&gt;comparingByValue().reversed())</span><br><span class="line">    .limit(<span class="number">3</span>)</span><br><span class="line">    .forEach(System.out::println);</span><br></pre></td></tr></table></figure></div>
+
+<p>词频统计、点击次数统计、错误日志聚合……都是这个套路。</p>
+<hr>
+<h2 id="二、栈-—-不只是括号匹配"><a href="#二、栈-—-不只是括号匹配" class="headerlink" title="二、栈 — 不只是括号匹配"></a>二、栈 — 不只是括号匹配</h2><p>说实话”括号匹配”这个经典题，在业务里我真没遇到过。但<strong>栈的思想</strong>——后进先出、状态回退——倒是经常碰到。</p>
+<h3 id="1-撤销-重做"><a href="#1-撤销-重做" class="headerlink" title="1. 撤销&#x2F;重做"></a>1. 撤销&#x2F;重做</h3><p>做过在线编辑器或者表单设计器的同学应该懂这个需求：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Deque&lt;EditAction&gt; undoStack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">Deque&lt;EditAction&gt; redoStack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">edit</span><span class="params">(EditAction action)</span> &#123;</span><br><span class="line">    action.apply();</span><br><span class="line">    undoStack.push(action);</span><br><span class="line">    <span class="comment">// 每次新操作，清空 redo 栈</span></span><br><span class="line">    redoStack.clear();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">undo</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!undoStack.isEmpty()) &#123;</span><br><span class="line">        <span class="type">EditAction</span> <span class="variable">action</span> <span class="operator">=</span> undoStack.pop();</span><br><span class="line">        action.revert();</span><br><span class="line">        redoStack.push(action);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">redo</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!redoStack.isEmpty()) &#123;</span><br><span class="line">        <span class="type">EditAction</span> <span class="variable">action</span> <span class="operator">=</span> redoStack.pop();</span><br><span class="line">        action.apply();</span><br><span class="line">        undoStack.push(action);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>核心思想就是<strong>两个栈互相倒腾</strong>。undo 把操作弹出来撤销，同时压进 redo 栈；redo 反过来。</p>
+<h3 id="2-面包屑导航-路径回溯"><a href="#2-面包屑导航-路径回溯" class="headerlink" title="2. 面包屑导航 &#x2F; 路径回溯"></a>2. 面包屑导航 &#x2F; 路径回溯</h3><p>这个倒是挺直觉的：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用户一级一级点进去</span></span><br><span class="line">Deque&lt;String&gt; path = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">path.push(<span class="string">&quot;首页&quot;</span>);</span><br><span class="line">path.push(<span class="string">&quot;系统管理&quot;</span>);</span><br><span class="line">path.push(<span class="string">&quot;用户管理&quot;</span>);</span><br><span class="line">path.push(<span class="string">&quot;用户详情&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 点返回上一级</span></span><br><span class="line">path.pop();  <span class="comment">// 回到&quot;用户管理&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>本质就是把浏览路径当栈来维护。</p>
+<h3 id="3-嵌套配置校验"><a href="#3-嵌套配置校验" class="headerlink" title="3. 嵌套配置校验"></a>3. 嵌套配置校验</h3><p>做过一些配置解析的场景，比如校验 JSON 模板里的括号是否合法，或者解析嵌套的审批规则表达式：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(String s)</span> &#123;</span><br><span class="line">    Deque&lt;Character&gt; stack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c : s.toCharArray()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (c == <span class="string">&#x27;(&#x27;</span>) stack.push(<span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;[&#x27;</span>) stack.push(<span class="string">&#x27;]&#x27;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;&#123;&#x27;</span>) stack.push(<span class="string">&#x27;&#125;&#x27;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (stack.isEmpty() || stack.pop() != c) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>虽然业务里不会让你手写这个，但理解栈的思路，排查一些嵌套解析的 bug 会快很多。</p>
+<hr>
+<h2 id="三、队列-—-异步解耦的老朋友"><a href="#三、队列-—-异步解耦的老朋友" class="headerlink" title="三、队列 — 异步解耦的老朋友"></a>三、队列 — 异步解耦的老朋友</h2><h3 id="1-本地任务队列"><a href="#1-本地任务队列" class="headerlink" title="1. 本地任务队列"></a>1. 本地任务队列</h3><p>不是所有场景都需要上 MQ。有些轻量级的异步处理，用个本地队列就够了：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;Runnable&gt; taskQueue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">submitTask</span><span class="params">(Runnable task)</span> &#123;</span><br><span class="line">    taskQueue.offer(task);  <span class="comment">// 放进去</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (!taskQueue.isEmpty()) &#123;</span><br><span class="line">        <span class="type">Runnable</span> <span class="variable">task</span> <span class="operator">=</span> taskQueue.poll();  <span class="comment">// 取出来执行</span></span><br><span class="line">        task.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>我之前做一个批量导入的需求，用户上传 5000 条数据，不是同步处理完返回的，而是先把任务丢进队列，后台慢慢消费，前端轮询进度。思路就是这样。</p>
+<h3 id="2-BFS-层级遍历"><a href="#2-BFS-层级遍历" class="headerlink" title="2. BFS 层级遍历"></a>2. BFS 层级遍历</h3><p>这个在做<strong>组织架构树</strong>、<strong>评论树</strong>的层级展示时用得上：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;Employee&gt;&gt; <span class="title function_">levelOrder</span><span class="params">(Employee root)</span> &#123;</span><br><span class="line">    List&lt;List&lt;Employee&gt;&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    Queue&lt;Employee&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">    queue.offer(root);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> queue.size();  <span class="comment">// 当前层有多少个</span></span><br><span class="line">        List&lt;Employee&gt; level = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">            <span class="type">Employee</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">            level.add(node);</span><br><span class="line">            <span class="keyword">if</span> (node.getChildren() != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (Employee child : node.getChildren()) &#123;</span><br><span class="line">                    queue.offer(child);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        result.add(level);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>面试考烂了的”BFS 逐层遍历”，在业务里其实就是”我要按层级展示部门架构”。</p>
+<hr>
+<h2 id="四、树-—-中后台开发的半壁江山"><a href="#四、树-—-中后台开发的半壁江山" class="headerlink" title="四、树 — 中后台开发的半壁江山"></a>四、树 — 中后台开发的半壁江山</h2><p>做过后台管理系统的都知道，菜单、地区、组织架构、商品分类……到处都是树。</p>
+<h3 id="1-平铺数据-→-树形结构"><a href="#1-平铺数据-→-树形结构" class="headerlink" title="1. 平铺数据 → 树形结构"></a>1. 平铺数据 → 树形结构</h3><p>数据库里一般存的是 <code>id + parentId</code> 的扁平结构，前端要的是树。这个转换代码写了不知道多少遍了：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;Menu&gt; <span class="title function_">buildTree</span><span class="params">(List&lt;Menu&gt; allMenus)</span> &#123;</span><br><span class="line">    <span class="comment">// 先用 Map 存一份，方便 O(1) 查找</span></span><br><span class="line">    Map&lt;Long, Menu&gt; map = allMenus.stream()</span><br><span class="line">        .collect(Collectors.toMap(Menu::getId, m -&gt; m));</span><br><span class="line"></span><br><span class="line">    List&lt;Menu&gt; roots = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (Menu menu : allMenus) &#123;</span><br><span class="line">        <span class="keyword">if</span> (menu.getParentId() == <span class="literal">null</span> || menu.getParentId() == <span class="number">0L</span>) &#123;</span><br><span class="line">            roots.add(menu);  <span class="comment">// 根节点</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">Menu</span> <span class="variable">parent</span> <span class="operator">=</span> map.get(menu.getParentId());</span><br><span class="line">            <span class="keyword">if</span> (parent != <span class="literal">null</span>) &#123;</span><br><span class="line">                parent.getChildren().add(menu);  <span class="comment">// 挂到父节点下面</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> roots;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这里其实<strong>同时用了 HashMap + 树</strong>。先用 HashMap 做快速定位父节点，再组装树。单独用树去遍历查找父节点，复杂度就高了。</p>
+<h3 id="2-递归求和"><a href="#2-递归求和" class="headerlink" title="2. 递归求和"></a>2. 递归求和</h3><p>“计算某个部门及其所有子部门的预算总和”——这种需求太经典了：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> BigDecimal <span class="title function_">sumBudget</span><span class="params">(Department dept)</span> &#123;</span><br><span class="line">    <span class="type">BigDecimal</span> <span class="variable">total</span> <span class="operator">=</span> dept.getBudget();</span><br><span class="line">    <span class="keyword">for</span> (Department child : dept.getChildren()) &#123;</span><br><span class="line">        total = total.add(sumBudget(child));  <span class="comment">// 递归加</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> total;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>树的递归遍历，背下来不如理解它——<strong>碰到子结构和父结构一样的东西，基本就是递归</strong>。</p>
+<hr>
+<h2 id="五、排序-—-别只会-Collections-sort"><a href="#五、排序-—-别只会-Collections-sort" class="headerlink" title="五、排序 — 别只会 Collections.sort()"></a>五、排序 — 别只会 Collections.sort()</h2><h3 id="1-优先队列：重要任务先执行"><a href="#1-优先队列：重要任务先执行" class="headerlink" title="1. 优先队列：重要任务先执行"></a>1. 优先队列：重要任务先执行</h3><p>这个场景你可能用过但没意识到这就是”堆”：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 优先级队列：数字越大优先级越高</span></span><br><span class="line">Queue&lt;WorkOrder&gt; pq = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;(</span><br><span class="line">    Comparator.comparingInt(WorkOrder::getPriority).reversed()</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">pq.offer(<span class="keyword">new</span> <span class="title class_">WorkOrder</span>(<span class="string">&quot;普通工单&quot;</span>, <span class="number">1</span>));</span><br><span class="line">pq.offer(<span class="keyword">new</span> <span class="title class_">WorkOrder</span>(<span class="string">&quot;紧急工单&quot;</span>, <span class="number">3</span>));</span><br><span class="line">pq.offer(<span class="keyword">new</span> <span class="title class_">WorkOrder</span>(<span class="string">&quot;一般工单&quot;</span>, <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">pq.poll(); <span class="comment">// → 紧急工单，最先出来</span></span><br></pre></td></tr></table></figure></div>
+
+<p>消息消费优先级、待办事项排序、定时任务调度……很多框架底层都是优先队列，只是封装得太好你没注意到。</p>
+<h3 id="2-多字段排序"><a href="#2-多字段排序" class="headerlink" title="2. 多字段排序"></a>2. 多字段排序</h3><p>这个需求月月见：”订单列表先按状态排，状态一样按时间倒序，时间还一样就按金额降序”：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">orders.sort(Comparator</span><br><span class="line">    .comparing(Order::getStatus)</span><br><span class="line">    .thenComparing(Order::getCreateTime, Comparator.reverseOrder())</span><br><span class="line">    .thenComparing(Order::getAmount, Comparator.reverseOrder())</span><br><span class="line">);</span><br></pre></td></tr></table></figure></div>
+
+<p><code>Comparator</code> 链式调用是 Java 8 之后的写法，比以前手写 compare 方法优雅太多。这段代码建议存到你的代码片段库里，用到的概率非常高。</p>
+<hr>
+<h2 id="六、双指针-滑动窗口-—-数据处理利器"><a href="#六、双指针-滑动窗口-—-数据处理利器" class="headerlink" title="六、双指针 &#x2F; 滑动窗口 — 数据处理利器"></a>六、双指针 &#x2F; 滑动窗口 — 数据处理利器</h2><h3 id="1-合并两个有序列表"><a href="#1-合并两个有序列表" class="headerlink" title="1. 合并两个有序列表"></a>1. 合并两个有序列表</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 比如：合并两段按时间排序的日志</span></span><br><span class="line"><span class="keyword">public</span> List&lt;LogEntry&gt; <span class="title function_">mergeSorted</span><span class="params">(List&lt;LogEntry&gt; a, List&lt;LogEntry&gt; b)</span> &#123;</span><br><span class="line">    List&lt;LogEntry&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; a.size() &amp;&amp; j &lt; b.size()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (a.get(i).getTimestamp() &lt;= b.get(j).getTimestamp()) &#123;</span><br><span class="line">            result.add(a.get(i++));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            result.add(b.get(j++));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; a.size()) result.add(a.get(i++));</span><br><span class="line">    <span class="keyword">while</span> (j &lt; b.size()) result.add(b.get(j++));</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>归并排序的 merge 步骤，直接就能用来合并两个有序数据源。日志合并、时间线合并、多数据源同步……都能用。</p>
+<h3 id="2-滑动窗口：最近-N-天统计"><a href="#2-滑动窗口：最近-N-天统计" class="headerlink" title="2. 滑动窗口：最近 N 天统计"></a>2. 滑动窗口：最近 N 天统计</h3><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 计算最近7天的移动平均销售额</span></span><br><span class="line"><span class="keyword">public</span> List&lt;Double&gt; <span class="title function_">movingAverage</span><span class="params">(List&lt;Double&gt; dailySales, <span class="type">int</span> windowSize)</span> &#123;</span><br><span class="line">    List&lt;Double&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="type">double</span> <span class="variable">windowSum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; dailySales.size(); i++) &#123;</span><br><span class="line">        windowSum += dailySales.get(i);</span><br><span class="line">        <span class="comment">// 窗口满了，把最左边那个减掉</span></span><br><span class="line">        <span class="keyword">if</span> (i &gt;= windowSize) &#123;</span><br><span class="line">            windowSum -= dailySales.get(i - windowSize);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 窗口大小够了就开始算平均</span></span><br><span class="line">        <span class="keyword">if</span> (i &gt;= windowSize - <span class="number">1</span>) &#123;</span><br><span class="line">            result.add(windowSum / windowSize);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>做数据大屏或者监控看板的时候，”最近 N 天的平均值”这种需求很常见。滑动窗口的好处是 O(n) 搞定，不用每次重新算。</p>
+<hr>
+<h2 id="七、LRU-缓存-—-连面试官都爱考，业务里也真用"><a href="#七、LRU-缓存-—-连面试官都爱考，业务里也真用" class="headerlink" title="七、LRU 缓存 — 连面试官都爱考，业务里也真用"></a>七、LRU 缓存 — 连面试官都爱考，业务里也真用</h2><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LRUCache</span>&lt;K, V&gt; <span class="keyword">extends</span> <span class="title class_">LinkedHashMap</span>&lt;K, V&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> maxSize;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">LRUCache</span><span class="params">(<span class="type">int</span> maxSize)</span> &#123;</span><br><span class="line">        <span class="comment">// accessOrder = true 是关键，让链表按访问顺序排列</span></span><br><span class="line">        <span class="built_in">super</span>(maxSize, <span class="number">0.75f</span>, <span class="literal">true</span>);</span><br><span class="line">        <span class="built_in">this</span>.maxSize = maxSize;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="type">boolean</span> <span class="title function_">removeEldestEntry</span><span class="params">(Map.Entry&lt;K, V&gt; eldest)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> size() &gt; maxSize;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>用起来非常简单：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 缓存最近访问的 1000 个用户，满了自动淘汰最久没用的</span></span><br><span class="line">LRUCache&lt;Long, User&gt; userCache = <span class="keyword">new</span> <span class="title class_">LRUCache</span>&lt;&gt;(<span class="number">1000</span>);</span><br><span class="line">userCache.put(user.getId(), user);</span><br></pre></td></tr></table></figure></div>
+
+<p>Java 的 <code>LinkedHashMap</code> 天然支持 LRU，重写一个方法就完事了。面试的时候手写 LRU 需要自己维护双向链表 + HashMap，但业务里真不用那么折腾。</p>
+<p>什么时候会用到？调用频率高、数据量不大的热点数据缓存，比如用户信息、配置项、字典值。比直接打 DB 快一个量级。</p>
+<hr>
+<h2 id="八、图-—-关系网络、社交推荐"><a href="#八、图-—-关系网络、社交推荐" class="headerlink" title="八、图 — 关系网络、社交推荐"></a>八、图 — 关系网络、社交推荐</h2><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 找出某个用户的 N 度人脉</span></span><br><span class="line"><span class="keyword">public</span> Set&lt;Long&gt; <span class="title function_">findConnections</span><span class="params">(Map&lt;Long, Set&lt;Long&gt;&gt; graph,</span></span><br><span class="line"><span class="params">                                  <span class="type">long</span> userId, <span class="type">int</span> degree)</span> &#123;</span><br><span class="line">    Set&lt;Long&gt; visited = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">    Queue&lt;<span class="type">long</span>[]&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">    queue.offer(<span class="keyword">new</span> <span class="title class_">long</span>[]&#123;userId, <span class="number">0</span>&#125;);</span><br><span class="line">    visited.add(userId);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">        <span class="type">long</span>[] current = queue.poll();</span><br><span class="line">        <span class="type">long</span> <span class="variable">uid</span> <span class="operator">=</span> current[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">currentDegree</span> <span class="operator">=</span> (<span class="type">int</span>) current[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (currentDegree &gt;= degree) <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">long</span> friend : graph.getOrDefault(uid, Collections.emptySet())) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!visited.contains(friend)) &#123;</span><br><span class="line">                visited.add(friend);</span><br><span class="line">                queue.offer(<span class="keyword">new</span> <span class="title class_">long</span>[]&#123;friend, currentDegree + <span class="number">1</span>&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    visited.remove(userId);  <span class="comment">// 排除自己</span></span><br><span class="line">    <span class="keyword">return</span> visited;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>这个在社交场景里是刚需——“你可能认识的人”、”二度好友”。本质就是图的 BFS 遍历，限制一下层数就行。</p>
+<p>非社交场景也有：<strong>依赖关系分析</strong>（A 依赖 B、B 依赖 C）、<strong>流程编排</strong>（任务之间的先后关系），都是图的问题。</p>
+<hr>
+<h2 id="九、位运算-—-权限系统最爱"><a href="#九、位运算-—-权限系统最爱" class="headerlink" title="九、位运算 — 权限系统最爱"></a>九、位运算 — 权限系统最爱</h2><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Permission</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">READ</span>   <span class="operator">=</span> <span class="number">1</span>;       <span class="comment">// 0001</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">WRITE</span>  <span class="operator">=</span> <span class="number">1</span> &lt;&lt; <span class="number">1</span>;  <span class="comment">// 0010</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">DELETE</span> <span class="operator">=</span> <span class="number">1</span> &lt;&lt; <span class="number">2</span>;  <span class="comment">// 0100</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">ADMIN</span>  <span class="operator">=</span> <span class="number">1</span> &lt;&lt; <span class="number">3</span>;  <span class="comment">// 1000</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断是否拥有某个权限</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">hasPermission</span><span class="params">(<span class="type">int</span> userPerm, <span class="type">int</span> perm)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (userPerm &amp; perm) == perm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加权限</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">addPermission</span><span class="params">(<span class="type">int</span> userPerm, <span class="type">int</span> perm)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userPerm | perm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 移除权限</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">removePermission</span><span class="params">(<span class="type">int</span> userPerm, <span class="type">int</span> perm)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userPerm &amp; ~perm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>用起来：</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">userPerm</span> <span class="operator">=</span> Permission.READ | Permission.WRITE;  <span class="comment">// 0011</span></span><br><span class="line"></span><br><span class="line">Permission.hasPermission(userPerm, Permission.READ);   <span class="comment">// true</span></span><br><span class="line">Permission.hasPermission(userPerm, Permission.DELETE); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">userPerm = Permission.addPermission(userPerm, Permission.DELETE); <span class="comment">// 0111</span></span><br><span class="line">userPerm = Permission.removePermission(userPerm, Permission.WRITE); <span class="comment">// 0101</span></span><br></pre></td></tr></table></figure></div>
+
+<p>一个 int 就能存几十个权限标记，判断、组合、移除全是位运算，又快又省空间。Linux 的文件权限（rwx）就是这个思路。</p>
+<hr>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>写这篇文章的目的不是让大家回去背算法——<strong>是帮你在遇到业务场景的时候，能快速反应过来”这个东西用什么数据结构最合适”</strong>。</p>
+<p>一张速查表放在这，收藏了不亏：</p>
+<table>
+<thead>
+<tr>
+<th>业务场景</th>
+<th>该想到的数据结构&#x2F;算法</th>
+<th>时间复杂度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>快速查找、ID 映射</td>
+<td>HashMap</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>分组统计、词频计数</td>
+<td>HashMap + groupingBy&#x2F;merge</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>撤销&#x2F;重做、路径回退</td>
+<td>栈 (Deque)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>异步消费、任务排队</td>
+<td>队列 (Queue)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>优先级任务调度</td>
+<td>优先队列 (PriorityQueue)</td>
+<td>O(log n)</td>
+</tr>
+<tr>
+<td>菜单&#x2F;组织&#x2F;地区树</td>
+<td>树 + 递归 + HashMap</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>最近 N 条、滑动均值</td>
+<td>滑动窗口 &#x2F; 双指针</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>热点数据缓存</td>
+<td>LRU (LinkedHashMap)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>社交关系、依赖分析</td>
+<td>图 + BFS&#x2F;DFS</td>
+<td>O(V+E)</td>
+</tr>
+<tr>
+<td>权限标记</td>
+<td>位运算</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>排行榜、TopK</td>
+<td>堆 &#x2F; 排序</td>
+<td>O(n log k)</td>
+</tr>
+</tbody></table>
+<p>总结：<strong>HashMap 能解决大部分问题，树和排序解决剩下的大部分，剩下的一小撮才需要图、位运算这些。</strong></p>
+<p>先把这些用熟，比刷 200 道 LeetCode 管用。</p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 写了几年业务代码，发现数据结构早就藏在每一行里</li>
+        <li><strong>作者:</strong> 星隐</li>
+        <li><strong>创建于
+                :</strong> 2026-06-03 22:14:00</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2026-06-05 14:20:17
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://www.starin.top/post/9880822f453f/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Java/">#Java</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">#数据结构</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91/">#业务开发</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/post/e363828f77b7/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">从 hexo-admin 的漏洞堆里爬出来，我自己写了一个 Hexo 管理后台</span>
+						<span class="post-nav-item">上一篇</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/post/89bfea82ddd2/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">AI科研写作 Prompt 集合</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">写了几年业务代码，发现数据结构早就藏在每一行里</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81HashMap-%E2%80%94-%E7%9C%9F%C2%B7%E5%8D%A0%E4%BA%86-80-%E5%9C%BA%E6%99%AF"><span class="nav-text">一、HashMap — 真·占了 80% 场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%AB%E5%86%8D%E5%B5%8C%E5%A5%97%E5%BE%AA%E7%8E%AF%E6%9F%A5%E6%95%B0%E6%8D%AE%E4%BA%86"><span class="nav-text">1. 别再嵌套循环查数据了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%86%E7%BB%84%E7%BB%9F%E8%AE%A1%EF%BC%8C%E4%B8%80%E8%A1%8C%E6%90%9E%E5%AE%9A"><span class="nav-text">2. 分组统计，一行搞定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%AE%A1%E6%95%B0%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="nav-text">3. 计数器模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%A0%88-%E2%80%94-%E4%B8%8D%E5%8F%AA%E6%98%AF%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D"><span class="nav-text">二、栈 — 不只是括号匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%92%A4%E9%94%80-%E9%87%8D%E5%81%9A"><span class="nav-text">1. 撤销&#x2F;重做</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%9D%A2%E5%8C%85%E5%B1%91%E5%AF%BC%E8%88%AA-%E8%B7%AF%E5%BE%84%E5%9B%9E%E6%BA%AF"><span class="nav-text">2. 面包屑导航 &#x2F; 路径回溯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%B5%8C%E5%A5%97%E9%85%8D%E7%BD%AE%E6%A0%A1%E9%AA%8C"><span class="nav-text">3. 嵌套配置校验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%98%9F%E5%88%97-%E2%80%94-%E5%BC%82%E6%AD%A5%E8%A7%A3%E8%80%A6%E7%9A%84%E8%80%81%E6%9C%8B%E5%8F%8B"><span class="nav-text">三、队列 — 异步解耦的老朋友</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9C%AC%E5%9C%B0%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97"><span class="nav-text">1. 本地任务队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-BFS-%E5%B1%82%E7%BA%A7%E9%81%8D%E5%8E%86"><span class="nav-text">2. BFS 层级遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%A0%91-%E2%80%94-%E4%B8%AD%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91%E7%9A%84%E5%8D%8A%E5%A3%81%E6%B1%9F%E5%B1%B1"><span class="nav-text">四、树 — 中后台开发的半壁江山</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%B9%B3%E9%93%BA%E6%95%B0%E6%8D%AE-%E2%86%92-%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84"><span class="nav-text">1. 平铺数据 → 树形结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%80%92%E5%BD%92%E6%B1%82%E5%92%8C"><span class="nav-text">2. 递归求和</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%8E%92%E5%BA%8F-%E2%80%94-%E5%88%AB%E5%8F%AA%E4%BC%9A-Collections-sort"><span class="nav-text">五、排序 — 别只会 Collections.sort()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%EF%BC%9A%E9%87%8D%E8%A6%81%E4%BB%BB%E5%8A%A1%E5%85%88%E6%89%A7%E8%A1%8C"><span class="nav-text">1. 优先队列：重要任务先执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%A4%9A%E5%AD%97%E6%AE%B5%E6%8E%92%E5%BA%8F"><span class="nav-text">2. 多字段排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%8F%8C%E6%8C%87%E9%92%88-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3-%E2%80%94-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%88%A9%E5%99%A8"><span class="nav-text">六、双指针 &#x2F; 滑动窗口 — 数据处理利器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="nav-text">1. 合并两个有序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%EF%BC%9A%E6%9C%80%E8%BF%91-N-%E5%A4%A9%E7%BB%9F%E8%AE%A1"><span class="nav-text">2. 滑动窗口：最近 N 天统计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81LRU-%E7%BC%93%E5%AD%98-%E2%80%94-%E8%BF%9E%E9%9D%A2%E8%AF%95%E5%AE%98%E9%83%BD%E7%88%B1%E8%80%83%EF%BC%8C%E4%B8%9A%E5%8A%A1%E9%87%8C%E4%B9%9F%E7%9C%9F%E7%94%A8"><span class="nav-text">七、LRU 缓存 — 连面试官都爱考，业务里也真用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%9B%BE-%E2%80%94-%E5%85%B3%E7%B3%BB%E7%BD%91%E7%BB%9C%E3%80%81%E7%A4%BE%E4%BA%A4%E6%8E%A8%E8%8D%90"><span class="nav-text">八、图 — 关系网络、社交推荐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E4%BD%8D%E8%BF%90%E7%AE%97-%E2%80%94-%E6%9D%83%E9%99%90%E7%B3%BB%E7%BB%9F%E6%9C%80%E7%88%B1"><span class="nav-text">九、位运算 — 权限系统最爱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-text">最后</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">星隐</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 28 篇文章
+                    </span>
+                    
+                        <span>
+                            共 89.2k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+            
+                
+        
+                
+        
+                
+
+                    
+                        <span><div data-v-72957a96="" class="inline-block w-16px flex-shrink-0 mr-1"><img class="logos" src="/images/ga_beian.png" data-v-2f48c4e0=""></div><a href="https://beian.mps.gov.cn/#/query/webSearch?code=41058102000968" rel="noreferrer" target="_blank">豫公网安备41058102000968号</a><br><a href="https://beian.miit.gov.cn/#/Integrated/recordQuery" rel="noreferrer" target="_blank">豫ICP备2022005062号-2</a></span>
+                    
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="图片查看器">
+	<button class="image-viewer-close" type="button" aria-label="关闭">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="上一页">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="关闭">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="下一页">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="站内搜索您需要的内容..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+
+
+
+    
+        
+<script src="/js/build/libs/mermaid.min.js"></script>
+
+    
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>
