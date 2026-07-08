@@ -6,7 +6,7 @@
   <link href="https://www.starin.top/atom.xml" rel="self"/>
   
   <link href="https://www.starin.top/"/>
-  <updated>2026-06-11T01:45:21.995Z</updated>
+  <updated>2026-07-08T01:27:47.498Z</updated>
   <id>https://www.starin.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>混合检索：Dense Embedding + BM25</title>
+    <link href="https://www.starin.top/post/979e2b239e48/"/>
+    <id>https://www.starin.top/post/979e2b239e48/</id>
+    <published>2026-07-08T01:25:00.000Z</published>
+    <updated>2026-07-08T01:27:47.498Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在企业级 RAG（Retrieval-Augmented Generation，检索增强生成）系统的落地过程中，单纯依赖密集向量检索（Dense Retrieval）已经越来越难以满足高精度业务场景的需求。这一点在国家标准类文档知识库（GB/T、GB、行业规范）场景下尤为突出。&lt;/p&gt;
+&lt;p&gt;标准文档有其鲜明的结构特征：大量标准编号（如 &lt;code&gt;GB/T 17775-2024&lt;/code&gt;）、条款编号（如 &lt;code&gt;5.3.2&lt;/code&gt;）、专有名词、固定术语、精确数字阈值以及标准间的引用关系。这类内容的核心特点是：&lt;strong&gt;语义相似不等于关键信息匹配&lt;/strong&gt;。纯向量检索擅长捕捉语义关联，却常常丢失编号、数字、精确术语等关键证据，这也是很多 RAG 系统”答非所问”的核心原因。&lt;/p&gt;
+&lt;p&gt;混合检索（Hybrid Search）正是解决这一问题的主流方案：用密集向量捕捉语义，用 BM25 等稀疏检索算法锁定关键词，两者互补，共同提升召回准确率。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="检索增强生成" scheme="https://www.starin.top/categories/%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA%E7%94%9F%E6%88%90/"/>
+    
+    <category term="向量数据库" scheme="https://www.starin.top/categories/%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA%E7%94%9F%E6%88%90/%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="Milvus" scheme="https://www.starin.top/tags/Milvus/"/>
+    
+    <category term="RAG" scheme="https://www.starin.top/tags/RAG/"/>
+    
+    <category term="向量检索" scheme="https://www.starin.top/tags/%E5%90%91%E9%87%8F%E6%A3%80%E7%B4%A2/"/>
+    
+    <category term="BM25" scheme="https://www.starin.top/tags/BM25/"/>
+    
+    <category term="混合检索" scheme="https://www.starin.top/tags/%E6%B7%B7%E5%90%88%E6%A3%80%E7%B4%A2/"/>
+    
+  </entry>
   
   <entry>
     <title>「UI UX Pro Max」给 Claude Code 装上设计大脑，完整上手指南</title>
@@ -111,25 +142,25 @@
   </entry>
   
   <entry>
-    <title>写了几年业务代码，发现数据结构早就藏在每一行里</title>
+    <title>学数据结构时满是迷茫，刚工作才懂它藏在每一行代码里</title>
     <link href="https://www.starin.top/post/9880822f453f/"/>
     <id>https://www.starin.top/post/9880822f453f/</id>
     <published>2026-06-03T14:14:00.000Z</published>
-    <updated>2026-06-05T06:20:17.840Z</updated>
+    <updated>2026-07-08T01:34:08.546Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;说实话，刚工作那会儿，我一直觉得”数据结构与算法”是面试八股文，跟写CRUD没什么关系。&lt;/p&gt;
-&lt;p&gt;直到某天我看到同事把一个嵌套 for 循环（O(n²)）改成了一行</summary>
+    <summary type="html">&lt;p&gt;说实话，大学啃数据结构那门课的时候，我全程都带着困惑。&lt;/p&gt;
+&lt;p&gt;上课跟着老师画哈希表、背栈的“后进先出”、对着二叉树写遍历，期末刷了一本题库，可心里始终打鼓：学这些到底有什么用？&lt;br&gt;难道以后上班写业务代码，还要天天手写链表、手搓平衡树？不就是写写增删改查，两层</summary>
         
       
     
     
     
-    <category term="后端笔记" scheme="https://www.starin.top/categories/%E5%90%8E%E7%AB%AF%E7%AC%94%E8%AE%B0/"/>
+    <category term="后端入门" scheme="https://www.starin.top/categories/%E5%90%8E%E7%AB%AF%E5%85%A5%E9%97%A8/"/>
     
     
     <category term="Java" scheme="https://www.starin.top/tags/Java/"/>
@@ -137,41 +168,6 @@
     <category term="数据结构" scheme="https://www.starin.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     <category term="业务开发" scheme="https://www.starin.top/tags/%E4%B8%9A%E5%8A%A1%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ChatGPT科研写作与论文辅助提示词合集（SCI / 论文写作 / 审稿回复）</title>
-    <link href="https://www.starin.top/post/f340cce24881/"/>
-    <id>https://www.starin.top/post/f340cce24881/</id>
-    <published>2026-04-17T02:00:00.000Z</published>
-    <updated>2026-04-17T02:00:00.000Z</updated>
-    
-    
-    <summary type="html">整理了一套完整的ChatGPT科研写作Prompt合集，涵盖学术翻译、SCI论文润色、降重改写、参考文献检查、摘要生成、审稿意见回复、综述写作等40+高效指令。</summary>
-    
-    
-    
-    <category term="AI工具" scheme="https://www.starin.top/categories/AI%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="科研写作" scheme="https://www.starin.top/categories/AI%E5%B7%A5%E5%85%B7/%E7%A7%91%E7%A0%94%E5%86%99%E4%BD%9C/"/>
-    
-    
-    <category term="ChatGPT" scheme="https://www.starin.top/tags/ChatGPT/"/>
-    
-    <category term="SCI论文" scheme="https://www.starin.top/tags/SCI%E8%AE%BA%E6%96%87/"/>
-    
-    <category term="学术写作" scheme="https://www.starin.top/tags/%E5%AD%A6%E6%9C%AF%E5%86%99%E4%BD%9C/"/>
-    
-    <category term="Prompt" scheme="https://www.starin.top/tags/Prompt/"/>
-    
-    <category term="论文润色" scheme="https://www.starin.top/tags/%E8%AE%BA%E6%96%87%E6%B6%A6%E8%89%B2/"/>
-    
-    <category term="审稿回复" scheme="https://www.starin.top/tags/%E5%AE%A1%E7%A8%BF%E5%9B%9E%E5%A4%8D/"/>
-    
-    <category term="参考文献" scheme="https://www.starin.top/tags/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE/"/>
-    
-    <category term="学术翻译" scheme="https://www.starin.top/tags/%E5%AD%A6%E6%9C%AF%E7%BF%BB%E8%AF%91/"/>
     
   </entry>
   
@@ -199,6 +195,41 @@
     <category term="科研" scheme="https://www.starin.top/tags/%E7%A7%91%E7%A0%94/"/>
     
     <category term="论文写作" scheme="https://www.starin.top/tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ChatGPT科研写作与论文辅助提示词合集（SCI / 论文写作 / 审稿回复）</title>
+    <link href="https://www.starin.top/post/f340cce24881/"/>
+    <id>https://www.starin.top/post/f340cce24881/</id>
+    <published>2026-04-17T02:00:00.000Z</published>
+    <updated>2026-04-17T02:00:00.000Z</updated>
+    
+    
+    <summary type="html">整理了一套完整的ChatGPT科研写作Prompt合集，涵盖学术翻译、SCI论文润色、降重改写、参考文献检查、摘要生成、审稿意见回复、综述写作等40+高效指令。</summary>
+    
+    
+    
+    <category term="AI工具" scheme="https://www.starin.top/categories/AI%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="科研写作" scheme="https://www.starin.top/categories/AI%E5%B7%A5%E5%85%B7/%E7%A7%91%E7%A0%94%E5%86%99%E4%BD%9C/"/>
+    
+    
+    <category term="Prompt" scheme="https://www.starin.top/tags/Prompt/"/>
+    
+    <category term="ChatGPT" scheme="https://www.starin.top/tags/ChatGPT/"/>
+    
+    <category term="SCI论文" scheme="https://www.starin.top/tags/SCI%E8%AE%BA%E6%96%87/"/>
+    
+    <category term="学术写作" scheme="https://www.starin.top/tags/%E5%AD%A6%E6%9C%AF%E5%86%99%E4%BD%9C/"/>
+    
+    <category term="论文润色" scheme="https://www.starin.top/tags/%E8%AE%BA%E6%96%87%E6%B6%A6%E8%89%B2/"/>
+    
+    <category term="审稿回复" scheme="https://www.starin.top/tags/%E5%AE%A1%E7%A8%BF%E5%9B%9E%E5%A4%8D/"/>
+    
+    <category term="参考文献" scheme="https://www.starin.top/tags/%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE/"/>
+    
+    <category term="学术翻译" scheme="https://www.starin.top/tags/%E5%AD%A6%E6%9C%AF%E7%BF%BB%E8%AF%91/"/>
     
   </entry>
   
