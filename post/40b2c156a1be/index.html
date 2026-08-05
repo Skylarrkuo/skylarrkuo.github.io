@@ -179,7 +179,7 @@
     
     
     
-<meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="StarIn" type="application/atom+xml">
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="StarIn" type="application/atom+xml">
 <link rel="alternate" href="/rss2.xml" title="StarIn" type="application/rss+xml">
 </head>
 
@@ -587,15 +587,15 @@
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">116</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">120</div>
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">27</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">28</div>
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">31</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">32</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -937,7 +937,7 @@ xadmin.site.register_plugin(ListExcelImportPlugin, ListAdminView)
         &lt;div class=&quot;modal-dialog&quot;&gt;
             &lt;div class=&quot;modal-content&quot;&gt;
                 &lt;form method=&quot;post&quot; action=&quot;&quot; enctype=&quot;multipart/form-data&quot;&gt;
-                    &lt;!--&#123;% csrf_token %&#125;--&gt;
+                    <!--{% csrf_token %}-->
                     &lt;div class=&quot;modal-header&quot;&gt;
                         &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-hidden=&quot;true&quot;&gt;×&lt;/button&gt;
                         &lt;h4 class=&quot;modal-title&quot;&gt;导入 Excel&lt;/h4&gt;
@@ -951,9 +951,9 @@ xadmin.site.register_plugin(ListExcelImportPlugin, ListAdminView)
                         &lt;/button&gt;
                     &lt;/div&gt;
                 &lt;/form&gt;
-            &lt;/div&gt;&lt;!-- /.modal-content --&gt;
-        &lt;/div&gt;&lt;!-- /.modal-dalog --&gt;
-    &lt;/div&gt;&lt;!-- /.modal --&gt;
+            &lt;/div&gt;<!-- /.modal-content -->
+        &lt;/div&gt;<!-- /.modal-dalog -->
+    &lt;/div&gt;<!-- /.modal -->
 
 &lt;/div&gt;
 
@@ -1728,11 +1728,11 @@ if hasattr(model_admin, &#39;&#123;field&#125;_choices&#39;.format(field=field.n
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 31 篇文章
+                        共撰写了 32 篇文章
                     </span>
                     
                         <span>
-                            共 98.5k 字
+                            共 100.6k 字
                         </span>
                     
                 </p>
