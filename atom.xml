@@ -381,13 +381,13 @@
     <category term="运维/部署" scheme="https://www.starin.top/categories/%E8%BF%90%E7%BB%B4-%E9%83%A8%E7%BD%B2/"/>
     
     
-    <category term="Hydro" scheme="https://www.starin.top/tags/Hydro/"/>
-    
-    <category term="OJ" scheme="https://www.starin.top/tags/OJ/"/>
+    <category term="Linux" scheme="https://www.starin.top/tags/Linux/"/>
     
     <category term="运维" scheme="https://www.starin.top/tags/%E8%BF%90%E7%BB%B4/"/>
     
-    <category term="Linux" scheme="https://www.starin.top/tags/Linux/"/>
+    <category term="Hydro" scheme="https://www.starin.top/tags/Hydro/"/>
+    
+    <category term="OJ" scheme="https://www.starin.top/tags/OJ/"/>
     
     <category term="PM2" scheme="https://www.starin.top/tags/PM2/"/>
     
@@ -726,9 +726,9 @@
     <category term="运维/部署" scheme="https://www.starin.top/categories/%E8%BF%90%E7%BB%B4-%E9%83%A8%E7%BD%B2/"/>
     
     
-    <category term="运维" scheme="https://www.starin.top/tags/%E8%BF%90%E7%BB%B4/"/>
-    
     <category term="Linux" scheme="https://www.starin.top/tags/Linux/"/>
+    
+    <category term="运维" scheme="https://www.starin.top/tags/%E8%BF%90%E7%BB%B4/"/>
     
     <category term="磁盘管理" scheme="https://www.starin.top/tags/%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86/"/>
     
