@@ -15,8 +15,42 @@
     <atom:link href="https://www.starin.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Wed, 05 Aug 2026 03:25:46 GMT</pubDate>
+    <pubDate>Fri, 06 Nov 2026 03:17:37 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>给佳能 5D2 重做魔灯菜单，从汉化一路改到界面交接</title>
+      <link>https://www.starin.top/post/cfefe0b17c67/</link>
+      <guid>https://www.starin.top/post/cfefe0b17c67/</guid>
+      <pubDate>Fri, 06 Nov 2026 03:15:54 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;给我的佳能 5D Mark II 折腾魔灯，最初的要求很简单，菜单换成简体中文，拍照时少翻几层。真正用起来，又觉得有些译名看不懂，小字偏细，底部的操作提示也很难和机身上的按键对应起来。&lt;/p&gt;
+&lt;p&gt;于是，这次修改逐渐变成了一个面向 5D2</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://www.starin.top/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5/">项目实践</category>
+      
+      
+      <category domain="https://www.starin.top/tags/%E4%BD%B3%E8%83%BD5D2/">佳能5D2</category>
+      
+      <category domain="https://www.starin.top/tags/Magic-Lantern/">Magic Lantern</category>
+      
+      <category domain="https://www.starin.top/tags/%E6%B1%89%E5%8C%96/">汉化</category>
+      
+      <category domain="https://www.starin.top/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">嵌入式开发</category>
+      
+      
+      <comments>https://www.starin.top/post/cfefe0b17c67/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>双人份 · Deux：把“今天吃什么”变成两个人的日常仪式</title>

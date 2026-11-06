@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="星隐">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://www.starin.top/post/cfefe0b17c67/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给佳能 5D2 重做魔灯菜单，从汉化一路改到界面交接">
+<meta property="og:url" content="https://www.starin.top/post/cfefe0b17c67/index.html">
+<meta property="og:site_name" content="StarIn">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.starin.top/images/redefine-og.webp">
+<meta property="article:published_time" content="2026-11-06T03:15:54.000Z">
+<meta property="article:modified_time" content="2026-11-06T03:17:37.104Z">
+<meta property="article:author" content="Skylarr Kuo">
+<meta property="article:tag" content="Magic Lantern">
+<meta property="article:tag" content="佳能5D2">
+<meta property="article:tag" content="嵌入式开发">
+<meta property="article:tag" content="汉化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.starin.top/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/logomain.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logomain.png">
+    <meta name="theme-color" content="#63a4a8">
+    <link rel="shortcut icon" href="/images/logomain.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            给佳能 5D2 重做魔灯菜单，从汉化一路改到界面交接 | 星隐拾光笺
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+        
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+        
+<script src="/js/build/libs/anime.min.js"></script>
+
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"www.starin.top","root":"/","language":"zh-CN","path":"search.json"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":null,"skip_dirs":[]}},"colors":{"primary":"#63a4a8","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/light.webp","dark":"/images/dark.webp"},"title":"星隐拾光笺","subtitle":{"text":["This is the first message","This is the second message","etc"],"hitokoto":{"enable":true,"show_author":true,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":false,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"3.8rem","subtitle_size":"1.8rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"center","links":[{"icon":"fa-brands fa-github","url":"https://github.com/Skylarrkuo"},{"icon":"fa-brands fa-bilibili","url":"https://space.bilibili.com/351993504"},{"icon":"fa-regular fa-envelope","url":"mailto:skylarrkuo@163.com"},{"icon":"fa-regular fa-square-rss","url":"https://www.starin.top/rss2.xml"},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null,"name":"微信","qrcode":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":true,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":true,"color":{"left":"#63a4a8","right":"#d7e3d1","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"随笔":{"path":"/essays","icon":"fa-regular fa-chart-bar"},"About":{"path":"/about","icon":"fa-regular fa-user"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"info","announcement":"Hello World!","show_on_mobile":true,"links":{"归档":{"path":"/archives","icon":"fa-regular fa-archive"},"标签":{"path":"/tags","icon":"fa-regular fa-tags"},"分类":{"path":"/categories","icon":"fa-regular fa-folder"},"随笔":{"path":"/essays","icon":"fa-regular fa-comment"},"RSS":{"path":"https://www.starin.top/rss2.xml","icon":"fa-regular fa-square-rss"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2023/9/25 17:00:00","statistics":true,"customize":null,"icp":{"enable":false,"number":"豫ICP备2022005062号-2","url":"https://beian.miit.gov.cn/#/Integrated/recordQuery"}},"footerStart":"2023/9/25 17:00:00","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.i18n = {"search":"站内搜索您需要的内容...","toc":"目录","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","post":"文章","posts":"文章","tagcloud":"标签云","comment":"评论","comments":"评论","top":"置顶","sticky":"置顶","go-back-home":"回到首页","masonry_loading":"照片加载中...","image_viewer":"图片查看器","close":"关闭","exif":{"title":"EXIF","cards":{"camera":"相机","lens":"镜头","exposure":"曝光","other":"其他"},"fields":{"make":"品牌","model":"机型","date_taken":"拍摄时间","lens_model":"镜头","focal_length":"焦距","focus_mode":"对焦模式","shutter":"快门","aperture":"光圈","iso":"感光度","exposure_program":"曝光程序","exposure_compensation":"曝光补偿","metering_mode":"测光模式","flash":"闪光灯","white_balance":"白平衡","latitude":"纬度","longitude":"经度","altitude":"海拔"},"status":{"loading":"加载中...","no_exif":"无 EXIF 信息","library_missing":"EXIF 库未加载","image_source_missing":"图片地址不可用","unavailable":"EXIF 不可用（可能被 CORS 阻止或缺少元数据）","flag_unavailable":"EXIF 不可用"}},"home":"首页","archive":"归档","archives":"归档","about":"关于","links":"链接","link":"链接","friends":"友情链接","friend":"友情链接","timeline":"时间轴","shuoshuo":"说说","bookmarks":"书签","site_uv":"访问人数","site_pv":"总访问量","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","status":"状态","runtime":"博客已运行","days":"天","hours":"小时","minutes":"分钟","seconds":"秒","optimized_by":"并由 Evan 进行优化","rights":"版权所有","site_posts":"共撰写了 %s 篇文章","site_wordcount":"共 %s 字","copyright":{"title":"标题","author":"作者","link":"链接","create_time":"创建于","update_time":"更新于","license_title":"版权声明","license_content":"本文章采用 %s 进行许可。","all_rights_reserved":"版权所有 &#169 %s，禁止转载。","public_domain":"本文为公有领域作品，可自由转载、引用。"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"},"create_time":"创建","update_time":"更新","expired":"这篇文章最后更新于 %s 天前，内容可能已经过时。"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="StarIn" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="StarIn" type="application/rss+xml">
+</head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <h2 class="ml13">
+        星隐拾光笺
+    </h2>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+        var animation = anime.timeline({ loop: true })
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [20, 0],
+                translateZ: 0,
+                opacity: [0, 1],
+                filter: ['blur(5px)', 'blur(0px)'],
+                easing: "easeOutExpo",
+                duration: 1200,
+                delay: (el, i) => 300 + 20 * i,
+            })
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [0, -20],
+                opacity: [1, 0],
+                filter: ['blur(0px)', 'blur(5px)'],
+                easing: "easeInExpo",
+                duration: 1000,
+                delay: (el, i) => 15 * i,
+                complete: function() {
+                    hidePreloader();
+                }
+            }, '-=700');
+
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
+        });
+
+        function hidePreloader() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 200);
+        }
+    </script>
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                星隐拾光笺
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/essays"
+                                        >
+                                    <i class="fa-regular fa-chart-bar fa-fw"></i>
+                                    随笔
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/essays"
+                        >
+                            <span>
+                                随笔
+                            </span>
+                            
+                                <i class="fa-regular fa-chart-bar fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/archives"
+                        >
+                            <span>归档</span>
+                            <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>标签</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>分类</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="https://www.starin.top/rss2.xml"
+                        >
+                            <span>RSS</span>
+                            <i class="fa-regular fa-square-rss fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">124</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">28</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">33</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			
+			
+			<img src="/images/5d2-magic-lantern/photo-list.png" alt="给佳能 5D2 重做魔灯菜单，从汉化一路改到界面交接" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75" />
+			
+			<div class="w-full flex items-center absolute bottom-0 justify-start">
+				<h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">给佳能 5D2 重做魔灯菜单，从汉化一路改到界面交接</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="/images/logomain.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">星隐</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-11-06 11:15:54</span>
+        <span class="mobile">2026-11-06 11:15:54</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-11-06 11:17:37</span>
+            <span class="mobile">2026-11-06 11:17:37</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5/">项目实践</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E4%BD%B3%E8%83%BD5D2/">佳能5D2</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Magic-Lantern/">Magic Lantern</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%B1%89%E5%8C%96/">汉化</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">嵌入式开发</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>4.1k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>14 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p>给我的佳能 5D Mark II 折腾魔灯，最初的要求很简单，菜单换成简体中文，拍照时少翻几层。真正用起来，又觉得有些译名看不懂，小字偏细，底部的操作提示也很难和机身上的按键对应起来。</p>
+<p>于是，这次修改逐渐变成了一个面向 5D2 的专版。保留魔灯的功能入口和经典菜单，重新做摄影列表、中文字体、按键提示和相机信息页。后面实机又遇到了退出菜单后按键、拨轮无响应，以及佳能参数页叠加信息乱跳的问题，排查就继续深入到了 ROM 的绘图和事件处理。</p>
+<p>这篇整理到 R8 为止。界面已经接入固件并完成编译，部分问题也用相机导出的 ROM 找到了明确证据。退出菜单后的整机卡住仍在验证，暂时没有可以宣布彻底解决的实机结果。</p>
+<h2 id="先找一个能继续改的汉化底子"><a href="#先找一个能继续改的汉化底子" class="headerlink" title="先找一个能继续改的汉化底子"></a>先找一个能继续改的汉化底子</h2><p>这次使用的是 <a class="link"   target="_blank" rel="noopener" href="https://github.com/ryulin456/magiclantern-zh" >ryulin456&#x2F;magiclantern-zh<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，构建源码固定在 <code>dc3d012aff3ddc0e07df3ceafb9b95dbfdf56f12</code>。选择它，主要是因为有 5D2 专用的完整模块包、源码归档和校验记录，便于把后续修改对应回具体文件。</p>
+<p>目标机型始终是 <strong>EOS 5D Mark II，佳能原厂固件 2.1.2</strong>。文中的修改只围绕这个组合进行，没有向其他机型推广。</p>
+<p>原始源码检出保留不动，修改通过脚本应用到独立的构建副本。开发时用了 AI 辅助写代码和排查，实机反馈则不断推翻和修正早期判断。下面说的 R1 到 R8，都是这次定制的迭代编号，与上游自己的发布编号无关。</p>
+<h2 id="把常用功能放到第一页"><a href="#把常用功能放到第一页" class="headerlink" title="把常用功能放到第一页"></a>把常用功能放到第一页</h2><p>我的使用顺序是拍照优先，兼顾录像。新版首页因此采用六行列表，上方分为“常用、拍摄、辅助、视频、全部”五类。</p>
+<p>默认常用项放了斑马纹、峰值对焦、直方图、高级包围拍摄、间隔拍摄和双 ISO。需要什么可以再收藏，模块没有加载、条目不可用时也会显示对应状态。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/5d2-magic-lantern/photo-list.png"
+                      alt="摄影列表和实体按键提示的早期交互预览"
+                ></p>
+<p><em>上图是 R4 的浏览器交互预览，运行共用的菜单 C 代码，状态为模拟输入。右侧按钮只用于电脑试用。</em></p>
+<p>有些功能只是开关，有些会开始拍摄、运行脚本，或进入自绘页面。这些项目不能都用一个 SET 直接执行。列表只对符合条件的普通开关做快捷切换，复杂设置和动作型功能仍交给原有页面处理。</p>
+<p>“全部”从已经注册的菜单生成，保留模块和脚本的入口。经典菜单也保留下来了，从“全部 → 经典菜单”切过去，再从经典菜单的“设置 → 菜单界面”切回来。隐藏条目仍遵循原来的隐藏设置，未加载的模块仍需先启用。</p>
+<p>这样改完，日常操作可以停留在列表里，偶尔要调整细项时再进入原页面。内部菜单名、配置键和脚本查找接口继续沿用原来的标识，中文只负责显示。</p>
+<h2 id="有些译名，得看过功能才知道怎么改"><a href="#有些译名，得看过功能才知道怎么改" class="headerlink" title="有些译名，得看过功能才知道怎么改"></a>有些译名，得看过功能才知道怎么改</h2><p>汉化最费时间的部分，是对着代码确认一句话究竟指什么。几个看起来通顺的旧译名，放进相机里就容易让人误会。</p>
+<table>
+<thead>
+<tr>
+<th>之前的译法</th>
+<th>调整后的译法</th>
+<th>修改原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>景深合成</td>
+<td>焦点包围拍摄</td>
+<td>相机拍摄不同焦点的照片，合成还要交给后期</td>
+</tr>
+<tr>
+<td>陷阱对焦</td>
+<td>合焦自动拍摄</td>
+<td>主体进入预设焦点时触发拍照，名称直接说明动作</td>
+</tr>
+<tr>
+<td>跟随对焦</td>
+<td>按键跟焦</td>
+<td>用按键驱动镜头，旧译名容易让人以为是主体追踪自动对焦</td>
+</tr>
+<tr>
+<td>恢复 ISO</td>
+<td>副 ISO</td>
+<td>指双 ISO 的另一档感光度</td>
+</tr>
+<tr>
+<td>裁切标记</td>
+<td>构图参考线</td>
+<td>显示构图辅助线，不会裁掉照片内容</td>
+</tr>
+<tr>
+<td>任意声道</td>
+<td>任意通道</td>
+<td>这里是 ETTR 的图像色彩通道，与音频无关</td>
+</tr>
+</tbody></table>
+<p>R4 对已有的 2052 条词条进行检查，1884 条找到了完整原文和使用位置，修订了其中 244 条。后续补漏又增加了 154 条，当前词库共 2206 条。</p>
+<p>词库之外还有直接画在屏幕上的文字，例如录制状态、对焦提示、错误通知。另一轮检查补译了 310 条这类文本，涉及 360 处显示调用。多行帮助也调整了处理顺序，先匹配完整译文，再取当前选项对应的行，避免拆开之后查不到翻译。</p>
+<p>有些标识保留英文更合适，例如 ISO、RAW、EV、dB，以及需要和文件对应的 <code>DUAL</code> 前缀。另有 168 条历史哈希词条没有定位到完整原文，继续保留，没有算进已经完成上下文校对的范围。外部 Lua 脚本、离线帮助图片和第三方模块也没有全部覆盖。</p>
+<p>菜单底部则加入了按键图形。照片风格键复用原有花瓣图案，回放键复用三角符号，SET、INFO、MENU 画成键帽，旁边保留简短动作文字。5D2 机身上能找到哪个键，界面就尽量画出哪个键。</p>
+<p>这件事后来还返工过一次。电脑模拟环境使用的字体别名，与相机里的实际字号不一致，导致键帽中的字超出边界。修正时改成明确的字体规格，并按文字实际宽度计算键帽宽度，补上了之前显示不全的部分。</p>
+<h2 id="92-万点的屏幕，中文怎么才能看清"><a href="#92-万点的屏幕，中文怎么才能看清" class="headerlink" title="92 万点的屏幕，中文怎么才能看清"></a>92 万点的屏幕，中文怎么才能看清</h2><p>5D2 的屏幕是 3 英寸、VGA、约 92 万点，见<a class="link"   target="_blank" rel="noopener" href="https://asia.canon/en/support/6200028000" >佳能规格页<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>。这里的点数按 RGB 子像素计算，<code>640 × 480 × 3 = 921600</code>，有效像素是 640×480。</p>
+<p>魔灯内部却使用 720×480 的绘图坐标。检查 5D2 平台源码后可以确认，这是原有的显示安排。页面仍要画满这块区域，再按 4∶3 屏幕比例显示，不能直接把所有绘图宽度改成 640。</p>
+<p>字体的问题也在这里。原来主要靠一套 32 像素字库缩成小字，细笔画在缩放后容易断开，相邻笔画也可能粘连。中文的笔画比英文密，这种变化很显眼。</p>
+<p>后来采用 <a class="link"   target="_blank" rel="noopener" href="https://github.com/notofonts/noto-cjk/blob/Sans2.004/Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Medium.otf" >Noto Sans CJK SC Medium<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，在电脑上分别生成 20、23、32 像素的点阵，给提示、分类和值、主要列表文字使用。生成时考虑横向 8∶9 的显示比例，使用确定的二值化阈值，不加误差扩散抖动。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/5d2-magic-lantern/font-detail.png"
+                      alt="旧字库与新字库的原生点阵局部对比"
+                ></p>
+<p><em>这是开发时的点阵比较，左侧为旧字库，右侧为新方案，按整数倍放大，没有做平滑。</em></p>
+<p>相机读取生成好的点阵，不需要装入整套 OTF 字体或字体栅格化引擎。三个字号各有 986 个字形，字形覆盖与边界都做了检查，资源加载失败时也保留回退路径。</p>
+<p>不过，电脑上的 PNG 放大后好看，还不能说明三英寸屏幕上一定舒服。显示器的尺寸、缩放和相机 LCD 的处理都会影响观感，所以预览同时保留了 720×480 原图和 640×480 比例图，最后仍要在相机上看。</p>
+<h2 id="相机信息页做出来了，读取和显示却各踩了一个坑"><a href="#相机信息页做出来了，读取和显示却各踩了一个坑" class="headerlink" title="相机信息页做出来了，读取和显示却各踩了一个坑"></a>相机信息页做出来了，读取和显示却各踩了一个坑</h2><p>相机信息页分为“总览、镜头、机身”三页。快门／拍摄次数用大字显示，电池使用分段条，镜头名称、焦距、光圈、CF 剩余空间等信息分区排列。它只读取已有属性缓存，不修改拍摄参数。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/5d2-magic-lantern/camera-info.png"
+                      alt="相机信息页的早期交互预览"
+                ></p>
+<p><em>上图为 R4 的示例数据，用于说明布局，不是这台相机的真实计数或读取结果。</em></p>
+<p>仪表页没有把快门次数换算成“剩余寿命”。镜头不报告某个字段，就显示“未报告”，还没有收到有效计数时显示 <code>--</code>，有效的零值才显示 <code>0</code>。</p>
+<p>实机测试时，页面出现了数值读不出来的情况。检查转储后，先找到了属性解析的假设错误。例如镜头报文实际是 14 字节，旧判断却要求至少 15 字节，导致已有信息也被挡掉了。对焦模式报文则需要兼容这台 5D2 返回的 2 字节格式。</p>
+<p>快门计数也不能把两个字段绑在一起判断。转储中的第二个计数小于第一个，早期逻辑因此把整组数据都判成无效。后来把第一个计数独立处理，附加计数不满足条件时，将总动作和 LV 附加动作留空，不再强行相减。</p>
+<p>另一个问题更隐蔽。页面上出现的 <code>u</code>、<code>u%</code>，有一部分来自格式化输出。实际执行佳能 2.1.2 ROM 里的 <code>vsnprintf</code> 后发现，在测试的这些路径中，<code>%u</code> 消耗了参数，却输出了字母 <code>u</code>。同一段代码放到电脑的 C 库里运行，数字当然正常。</p>
+<p>R7 针对这个差异作了修改。范围明确的电量、焦距等使用经过验证的格式，完整的无符号快门计数单独转换成十进制字符串。同时按 Canon 函数的长度约定，为字符串结尾预留空间，并处理中文截断，避免留下半个 UTF-8 字符。</p>
+<p>这也改变了后面的验证方式。浏览器预览继续用来检查布局，涉及相机函数的行为则尽量执行实际 ARM 固件和原始 ROM，不再用电脑上能显示作为依据。</p>
+<h2 id="退出菜单以后，谁还在往屏幕上画"><a href="#退出菜单以后，谁还在往屏幕上画" class="headerlink" title="退出菜单以后，谁还在往屏幕上画"></a>退出菜单以后，谁还在往屏幕上画</h2><p>最开始，卡住是在开启双 ISO、使用光学取景器拍摄后发现的，主 ISO 和副 ISO 为 200／400。屏幕还亮着，但按键和拨轮没有反应。之后又观察到，从魔灯返回佳能参数页时，附加信息会乱跳。</p>
+<p>这个现象让排查重点转向了菜单交接和叠加显示。到 R8，已经在受控条件下确认了几件事。</p>
+<p>第一，菜单虽然关闭，正在绘制的旧菜单帧仍可能提交到可见显存。R8 把最后一次提交与前缓冲交接放到同一把绘图锁下，并在锁内复核菜单状态，已经关闭就丢弃这一帧。</p>
+<p>第二，参数状态刷新事件 <code>0x3B</code> 会经过按键处理链。旧摄影界面的分支会消耗它，R8 改为让它继续传给佳能处理。</p>
+<p>第三，界面切换期间如果暂时没有当前控制器，旧重绘代码会继续访问空指针附近的地址。新代码先检查控制器、对话框和类型，条件不足时退出这次绘制并释放锁。这是在构造的切换条件下验证到的问题，还没有证据说明实机卡住当时就处于这个状态。</p>
+<p>原生参数页上还存在另一条绘制路径。魔灯的 FlexInfo 会画时钟、电量、容量、剩余张数等信息，其中也包含清理对应屏幕区域的操作。R8 给它增加了独立开关“全部 → 叠加显示 → 参数页叠加”，默认关闭。手动打开后，绘制前还会复核当前页面。实时取景辅助、相机信息页和经典菜单继续保留。</p>
+<p>按键处理也有值得注意的地方。佳能的事件分发会检查控制器标记，标记不匹配时，普通按键和拨轮可能进入队列清理路径。调用返回模式 0 的函数，只表示提交了切换请求，固定等一小段时间也不能证明原生页面已经接管输入。</p>
+<p>目前的测试执行了真实 ML ARM 代码和 Canon ROM，使用导出的 RAM 数据，以及受控的事件、计时器和显存输入。它能检查某个分支是否走错、事件是否被消耗、旧帧是否继续提交。完整相机启动、真实任务时序和 LCD 硬件还没有复现，因此这些发现与实机卡住之间的关系仍要继续验证。</p>
+<p>R8 同时补充了退出日志，区分事件进入佳能、被魔灯消耗和被佳能队列清理等情况。接下来的实机观察也会把机顶液晶与背屏放在一起看，确认到底是参数还能改变但画面异常，还是输入本身没有得到处理。</p>
+<h2 id="启动页、安装器和最终装卡文件"><a href="#启动页、安装器和最终装卡文件" class="headerlink" title="启动页、安装器和最终装卡文件"></a>启动页、安装器和最终装卡文件</h2><p>首次打开魔灯时的信息页重新整理过，名字仍用“魔灯”，副标题是“5D2 专版 · 精翻与易用设计”。页面只保留型号、版本和必要的进入操作，去掉界面的署名、邮箱和测试版提示。源码版权、许可证和字体授权保留。</p>
+<p>这页每次开机只出现一次，SET 进入菜单，半按快门退出。进入用的那次按键不会顺带修改菜单参数，也不会把用户已经选择的经典菜单强制切回列表。页面文案简化之后，实际验证到哪一步仍按构建记录说明。</p>
+<p>期间也怀疑过安装用的 <code>ML-SETUP.FIR</code> 是否不匹配。核对后，使用的 FIR 与对应 5D2／2.1.2 原版安装器逐字节一致，没有证据指向它导致这次异常。正常启动后运行的是 <code>autoexec.bin</code> 和模块，后续 FULL 包已经把经过型号、版本、长度和校验验证的 FIR 一起打包。安装器没有重编译，界面仍为原版。</p>
+<p>这里还踩过一次打包问题。双 ISO 的修正在独立构建中已经存在，但 R5、R6 完整包沿用了旧模块目录，修正没有真正进入那些 ZIP。R7 修正构建顺序，逐个核对模块产物与包内文件，R8 继续校验了全部 19 个模块。</p>
+<p>所以更新时需要把 <code>autoexec.bin</code> 和完整的 <code>ML</code> 目录一起替换，字体、语言资源、符号表和模块保持配套，并保留个人配置备份。已经能正常启动魔灯的卡，日常更新无需重复运行 FIR。切回经典菜单只改变操作界面，要回退代码则应恢复完整备份。</p>
+<p>当前包保留了原有 19 个模块和功能入口，不过有一个具体例外需要说明。排查双 ISO 时，5D2 的双 ISO 回放增强已暂时禁用，RAW 双 ISO 拍摄路径保留。这项取舍也还需要结合实机结果继续评估。</p>
+<h2 id="目前停在哪一步"><a href="#目前停在哪一步" class="headerlink" title="目前停在哪一步"></a>目前停在哪一步</h2><p>构建在 WSL Ubuntu 24.04 下进行，使用 xPack ARM GCC 14.2.1-1.1，目标仍是实际相机版本。每次输出除了固件包，还保留字体与词库检查、模块依赖、文件哈希和相应测试记录。</p>
+<p>目前的 R8 核心为 509632 字节，完整包包含 19 个模块、中文资源和匹配的 FIR。代码里确认的格式化、属性长度、菜单帧提交及事件处理问题已经作了对应修改。部分早期页面经过实机使用，但整套功能、拍摄和长时间运行并没有完成全面验证。</p>
+<p>这次最初想解决的是“菜单不好用”，最后花时间最多的却是一个数字怎么显示、一个事件该交给谁、菜单关掉之后还有谁在画屏幕。新列表和中文字体已经有了比较明确的样子，下一步仍是把退出菜单、返回佳能参数页、继续调整参数这一段在实机上查清楚。</p>
+<p>本文提到的定制改动尚未提交上游，开头的 GitHub 链接用于查阅汉化基础项目。R8 的验证结论也只对应本文记录的这套构建。</p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 给佳能 5D2 重做魔灯菜单，从汉化一路改到界面交接</li>
+        <li><strong>作者:</strong> 星隐</li>
+        <li><strong>创建于
+                :</strong> 2026-11-06 11:15:54</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2026-11-06 11:17:37
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://www.starin.top/post/cfefe0b17c67/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E4%BD%B3%E8%83%BD5D2/">#佳能5D2</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Magic-Lantern/">#Magic Lantern</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E6%B1%89%E5%8C%96/">#汉化</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">#嵌入式开发</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/post/18390f2fae2e/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">双人份 · Deux：把“今天吃什么”变成两个人的日常仪式</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">给佳能 5D2 重做魔灯菜单，从汉化一路改到界面交接</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E6%89%BE%E4%B8%80%E4%B8%AA%E8%83%BD%E7%BB%A7%E7%BB%AD%E6%94%B9%E7%9A%84%E6%B1%89%E5%8C%96%E5%BA%95%E5%AD%90"><span class="nav-text">先找一个能继续改的汉化底子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%8A%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E6%94%BE%E5%88%B0%E7%AC%AC%E4%B8%80%E9%A1%B5"><span class="nav-text">把常用功能放到第一页</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E4%BA%9B%E8%AF%91%E5%90%8D%EF%BC%8C%E5%BE%97%E7%9C%8B%E8%BF%87%E5%8A%9F%E8%83%BD%E6%89%8D%E7%9F%A5%E9%81%93%E6%80%8E%E4%B9%88%E6%94%B9"><span class="nav-text">有些译名，得看过功能才知道怎么改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#92-%E4%B8%87%E7%82%B9%E7%9A%84%E5%B1%8F%E5%B9%95%EF%BC%8C%E4%B8%AD%E6%96%87%E6%80%8E%E4%B9%88%E6%89%8D%E8%83%BD%E7%9C%8B%E6%B8%85"><span class="nav-text">92 万点的屏幕，中文怎么才能看清</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E6%9C%BA%E4%BF%A1%E6%81%AF%E9%A1%B5%E5%81%9A%E5%87%BA%E6%9D%A5%E4%BA%86%EF%BC%8C%E8%AF%BB%E5%8F%96%E5%92%8C%E6%98%BE%E7%A4%BA%E5%8D%B4%E5%90%84%E8%B8%A9%E4%BA%86%E4%B8%80%E4%B8%AA%E5%9D%91"><span class="nav-text">相机信息页做出来了，读取和显示却各踩了一个坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%80%E5%87%BA%E8%8F%9C%E5%8D%95%E4%BB%A5%E5%90%8E%EF%BC%8C%E8%B0%81%E8%BF%98%E5%9C%A8%E5%BE%80%E5%B1%8F%E5%B9%95%E4%B8%8A%E7%94%BB"><span class="nav-text">退出菜单以后，谁还在往屏幕上画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E9%A1%B5%E3%80%81%E5%AE%89%E8%A3%85%E5%99%A8%E5%92%8C%E6%9C%80%E7%BB%88%E8%A3%85%E5%8D%A1%E6%96%87%E4%BB%B6"><span class="nav-text">启动页、安装器和最终装卡文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E5%89%8D%E5%81%9C%E5%9C%A8%E5%93%AA%E4%B8%80%E6%AD%A5"><span class="nav-text">目前停在哪一步</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">星隐</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 33 篇文章
+                    </span>
+                    
+                        <span>
+                            共 104.7k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+            
+                
+        
+                
+        
+                
+
+                    
+                        <span><div data-v-72957a96="" class="inline-block w-16px flex-shrink-0 mr-1"><img class="logos" src="/images/ga_beian.png" data-v-2f48c4e0=""></div><a href="https://beian.mps.gov.cn/#/query/webSearch?code=41058102000968" rel="noreferrer" target="_blank">豫公网安备41058102000968号</a><br><a href="https://beian.miit.gov.cn/#/Integrated/recordQuery" rel="noreferrer" target="_blank">豫ICP备2022005062号-2</a></span>
+                    
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="图片查看器">
+	<button class="image-viewer-close" type="button" aria-label="关闭">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="上一页">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="关闭">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="下一页">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+	<div class="search-pop-overlay">
+	<div class="popup search-popup">
+		<div class="search-header">
+			<span class="search-input-field-pre">
+				<i class="fa-solid fa-keyboard"></i>
+			</span>
+			<div class="search-input-container">
+				<input autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="站内搜索您需要的内容..." spellcheck="false" type="search" class="search-input">
+			</div>
+			<span class="popup-btn-close">
+				<i class="fa-solid fa-times"></i>
+			</span>
+		</div>
+		<div id="search-result">
+			<div id="no-result">
+				<i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+
+
+
+    
+        
+<script src="/js/build/libs/mermaid.min.js"></script>
+
+    
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>
