@@ -15,8 +15,40 @@
     <atom:link href="https://www.starin.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Fri, 06 Nov 2026 03:17:37 GMT</pubDate>
+    <pubDate>Thu, 12 Nov 2026 02:09:34 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>四家支付测试环境对照</title>
+      <link>https://www.starin.top/post/9760d1b25df7/</link>
+      <guid>https://www.starin.top/post/9760d1b25df7/</guid>
+      <pubDate>Thu, 12 Nov 2026 01:58:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;上线前联调，常见的预期是「每家都有沙箱，换个域名就能跑」。实际把四家接进来会发现，「测试环境」在每家那里是完全不同的东西：有的是独立域名加独立账号，有的只是换一个 key，有的干脆不存在。&lt;/p&gt;
+&lt;p&gt;前提：同一业务链路里接两家以上渠道，且上线前要验证下单 → 回调 →</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://www.starin.top/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</category>
+      
+      
+      <category domain="https://www.starin.top/tags/%E6%94%AF%E4%BB%98/">支付</category>
+      
+      <category domain="https://www.starin.top/tags/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/">微信支付</category>
+      
+      <category domain="https://www.starin.top/tags/API/">API</category>
+      
+      
+      <comments>https://www.starin.top/post/9760d1b25df7/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>给佳能 5D2 重做魔灯菜单，从汉化一路改到界面交接</title>
