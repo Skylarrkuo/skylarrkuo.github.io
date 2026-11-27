@@ -15,8 +15,42 @@
     <atom:link href="https://www.starin.top/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Thu, 12 Nov 2026 02:09:34 GMT</pubDate>
+    <pubDate>Fri, 27 Nov 2026 03:22:37 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>在小米平板 6S Pro 上跑 Pop!_OS 26.04 与 COSMIC</title>
+      <link>https://www.starin.top/post/286a53f45813/</link>
+      <guid>https://www.starin.top/post/286a53f45813/</guid>
+      <pubDate>Fri, 27 Nov 2026 03:00:00 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;p&gt;&lt;strong&gt;Pop!_OS 26.04 LTS for Sheng · 首次公开发布&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;小米平板 6S Pro 12.4 的 Pop!_OS 移植现已发布。首发提供可刷入的镜像、签名本地 APT 仓库，以及本地和 GitHub</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://www.starin.top/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5/">项目实践</category>
+      
+      
+      <category domain="https://www.starin.top/tags/Linux/">Linux</category>
+      
+      <category domain="https://www.starin.top/tags/Pop-OS/">Pop!_OS</category>
+      
+      <category domain="https://www.starin.top/tags/COSMIC/">COSMIC</category>
+      
+      <category domain="https://www.starin.top/tags/%E5%B0%8F%E7%B1%B3%E5%B9%B3%E6%9D%BF-6S-Pro/">小米平板 6S Pro</category>
+      
+      
+      <comments>https://www.starin.top/post/286a53f45813/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>四家支付测试环境对照</title>
